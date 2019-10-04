@@ -17,7 +17,6 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         startButton = findViewById(R.id.startButton);
         startButton.setOnClickListener(this);
         helpButton = findViewById(R.id.helpButton);
