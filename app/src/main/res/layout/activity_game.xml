@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".Game">
 
     <ImageView
@@ -93,9 +94,9 @@
         android:layout_height="75dp"
         android:layout_marginRight="120dp"
         android:ems="10"
+        android:gravity="center"
         android:hint="Gæt på et bogstav"
         android:maxLength="1"
-        android:gravity="center"
         android:singleLine="true"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
