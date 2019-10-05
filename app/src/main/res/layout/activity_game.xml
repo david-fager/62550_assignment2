@@ -33,7 +33,7 @@
         tools:text="A, B, C, D, E, F" />
 
     <TextView
-        android:id="@+id/unused"
+        android:id="@+id/infoText"
         android:layout_width="0dp"
         android:layout_height="25dp"
         android:layout_marginTop="20dp"
@@ -55,14 +55,14 @@
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/unused"
+        app:layout_constraintEnd_toEndOf="@+id/infoText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/galgeImage"
-        app:layout_constraintTop_toBottomOf="@+id/unused"
+        app:layout_constraintTop_toBottomOf="@+id/infoText"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/unused2"
+        android:id="@+id/unused"
         android:layout_width="0dp"
         android:layout_height="25dp"
         android:text="Anvendte bogstaver:"
@@ -82,10 +82,10 @@
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/galgeImage"
-        app:layout_constraintEnd_toEndOf="@+id/unused2"
+        app:layout_constraintEnd_toEndOf="@+id/unused"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/galgeImage"
-        app:layout_constraintTop_toBottomOf="@+id/unused2"
+        app:layout_constraintTop_toBottomOf="@+id/unused"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
@@ -111,6 +111,8 @@
         android:layout_height="0dp"
         android:layout_marginRight="20dp"
         android:text="GÆT"
+        android:gravity="center_vertical"
+        android:textAlignment="center"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="@+id/inputField"
         app:layout_constraintEnd_toEndOf="parent"
