@@ -56,7 +56,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // Redo button hit
+        // Redo button hit - resets the game
         if (guessButton.getText().equals("\u27F2")) {
             resetGame();
         }
@@ -67,6 +67,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             return;
         }
 
+        // Checking if the gussed letter was guessed earlier in the game
         for (String letter : galgelogik.getBrugteBogstaver()) {
             if (letter.equals(inputField.getText().toString())) {
                 inputField.setText("");
@@ -80,9 +81,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         inputField.setText("");
         wordText.setText(galgelogik.getSynligtOrd().toUpperCase());
 
-        System.out.println("DAB: " + galgelogik.getBrugteBogstaver().get(galgelogik.getBrugteBogstaver().size() - 1));
-
-        // Display used letters
+        // Display used letters (builds a string appended with each guessed letter
         ArrayList<String> lettersList = galgelogik.getBrugteBogstaver();
         String guessedLetters = "";
         for (String letter : lettersList) {
@@ -96,7 +95,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         }
         lettersText.setText(guessedLetters.toUpperCase());
 
-        // Update hangman image
+        // Updates hangman image
         if (!galgelogik.erSidsteBogstavKorrekt()) {
             System.out.println("IMAGE AT: " + imageNumber);
             switch (imageNumber++) {
@@ -121,6 +120,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             }
         }
 
+        // Checks if the game is over, and if so whether the player won or lost.
         if (galgelogik.erSpilletSlut()) {
             System.out.println("GAME EITHER WON OR LOST");
             if (galgelogik.erSpilletVundet()) {
