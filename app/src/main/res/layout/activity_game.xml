@@ -65,7 +65,7 @@
         android:id="@+id/unused"
         android:layout_width="0dp"
         android:layout_height="25dp"
-        android:text="Anvendte bogstaver:"
+        android:text="Forkerte bogstaver:"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/wordText"

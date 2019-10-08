@@ -51,6 +51,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         guessButton.setText("GÆT");
         imageNumber = 1;
         galgeImage.setImageResource(R.drawable.galge);
+        galgelogik.logStatus();
         System.out.println("GAME RESET");
     }
 
@@ -63,6 +64,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
         // Empty field when button pressed
         if (inputField.getText().toString().equals("")) {
+            galgelogik.logStatus();
             System.out.println("EMPTY INPUT FIELD");
             return;
         }
@@ -71,6 +73,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         for (String letter : galgelogik.getBrugteBogstaver()) {
             if (letter.equals(inputField.getText().toString())) {
                 inputField.setText("");
+                galgelogik.logStatus();
                 System.out.println("LETTER ALREADY GUESSED");
                 return;
             }
@@ -119,6 +122,8 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                     break;
             }
         }
+
+        galgelogik.logStatus();
 
         // Checks if the game is over, and if so whether the player won or lost.
         if (galgelogik.erSpilletSlut()) {
