@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Help"></activity>
+        <activity android:name=".MenusheetActivity"></activity>
+        <activity android:name=".Help" />
         <activity android:name=".Game" />
         <activity android:name=".Menu">
             <intent-filter>

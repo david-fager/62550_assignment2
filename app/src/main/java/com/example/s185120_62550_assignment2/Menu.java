@@ -1,6 +1,7 @@
 package com.example.s185120_62550_assignment2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,8 +27,10 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == startButton) {
-            Intent i = new Intent(this, Game.class);
-            startActivity(i);
+            Fragment fragment = new Menusheet();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.sheetFrame, fragment).addToBackStack(null).commit();
+
         } else if (v == helpButton) {
             Intent i = new Intent(this, Help.class);
             startActivity(i);
