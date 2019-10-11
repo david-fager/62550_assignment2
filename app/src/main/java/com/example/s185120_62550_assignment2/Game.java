@@ -21,14 +21,40 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     private TextView info;
     private ImageView galgeImage;
     private int imageNumber = 1;
+    private boolean drmode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        // Checks if user expects words from dr.dk or not
+        drmode = getIntent().getExtras().getBoolean("drmode");
+
         galgelogik = new Galgelogik();
 
+
+        // Starting thread to get words from dr.dk and joining when thread finished
+        if (drmode) {
+            try {
+                Thread thread = new Thread() {
+                    public void run() {
+                        try {
+                            galgelogik.hentOrdFraDr();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                thread.start();
+                thread.join();
+            } catch (Exception e) {
+                e.printStackTrace();
+                finish();
+            }
+        }
+
+        // Initializes views and buttons
         guessButton = findViewById(R.id.guessButton);
         inputField = findViewById(R.id.inputField);
         wordText = findViewById(R.id.wordText);
@@ -41,6 +67,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         resetGame();
     }
 
+    // Sets every part of the game screen back to nothing
     public void resetGame() {
         galgelogik.nulstil();
         wordText.setText(galgelogik.getSynligtOrd());
@@ -142,5 +169,4 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         }
 
     }
-
 }

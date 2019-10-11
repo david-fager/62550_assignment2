@@ -1,7 +1,6 @@
 package com.example.s185120_62550_assignment2;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +12,8 @@ import androidx.fragment.app.Fragment;
 
 public class Menusheet extends Fragment implements View.OnClickListener {
 
-    ImageView greyOverlay;
-    Button normalButton, randomButton;
+    private ImageView greyOverlay;
+    private Button normalButton, randomButton;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View sheet = inflater.inflate(R.layout.activity_menusheet, container, false);
@@ -36,9 +35,12 @@ public class Menusheet extends Fragment implements View.OnClickListener {
             getFragmentManager().popBackStack();
         } else if (v == normalButton) {
             Intent i = new Intent(getActivity(), Game.class);
+            i.putExtra("drmode", false);
             startActivity(i);
         } else if (v == randomButton) {
-
+            Intent i = new Intent(getActivity(), Game.class);
+            i.putExtra("drmode", true);
+            startActivity(i);
         }
     }
 }
