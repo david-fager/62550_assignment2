@@ -51,9 +51,11 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     }
 
     // Called from the fragments class
-    public void chooseMode(boolean drmode) {
+    public void chooseMode(int mode, int diffValue) {
         // Starts a new thread to get words from dr.dk and joining when thread finished
-        if (drmode) {
+        if (mode == 1) {
+            galgelogik = new Galgelogik();
+        } else if (mode == 2) {
             try {
                 Thread thread = new Thread() {
                     public void run() {
@@ -70,8 +72,19 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 e.printStackTrace();
                 finish();
             }
-        } else {
-            galgelogik = new Galgelogik();
+        } else if (mode == 3) {
+            String difficulty = "1";
+            if (diffValue == 2) {
+                difficulty = "123";
+            } else if (diffValue == 1) {
+                difficulty = "12";
+            }
+            try {
+                galgelogik.hentOrdFraRegneark(difficulty);
+            } catch (Exception e) {
+                e. printStackTrace();
+                finish();
+            }
         }
         resetGame();
     }

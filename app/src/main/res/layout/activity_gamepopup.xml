@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/whiteBackground"
         android:layout_width="match_parent"
-        android:layout_height="270dp"
+        android:layout_height="380dp"
         android:layout_margin="30dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="2dp"
@@ -32,6 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="100dp"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="30dp"
         android:background="#0099CC"
@@ -42,13 +43,14 @@
         app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
         app:layout_constraintStart_toStartOf="@+id/whiteBackground"
         app:layout_constraintTop_toTopOf="@+id/whiteBackground"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0" />
 
     <Button
         android:id="@+id/randomButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="180dp"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="30dp"
         android:background="#0099CC"
@@ -59,18 +61,52 @@
         app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
         app:layout_constraintStart_toStartOf="@+id/whiteBackground"
         app:layout_constraintTop_toTopOf="@+id/whiteBackground"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0" />
+
+    <Button
+        android:id="@+id/docsButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="290dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="30dp"
+        android:background="#0099CC"
+        android:elevation="5dp"
+        android:text="Hent fra Google Sheets"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/whiteBackground"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
+        app:layout_constraintStart_toStartOf="@+id/whiteBackground"
+        app:layout_constraintTop_toTopOf="@+id/whiteBackground"
+        app:layout_constraintVertical_bias="0" />
 
     <TextView
         android:id="@+id/Popuptext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:elevation="5dp"
         android:text="Hvordan ønsker du at spille?"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/normalButton"
         app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
         app:layout_constraintStart_toStartOf="@+id/whiteBackground"
+        app:layout_constraintTop_toTopOf="@+id/whiteBackground"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <SeekBar
+        android:id="@+id/sheetsDiff"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="260dp"
+        android:elevation="5dp"
+        android:max="2"
+        android:progress="1"
+        android:progressTint="#FF0000"
+        app:layout_constraintBottom_toTopOf="@+id/docsButton"
+        app:layout_constraintEnd_toEndOf="@+id/docsButton"
+        app:layout_constraintStart_toStartOf="@+id/docsButton"
         app:layout_constraintTop_toTopOf="@+id/whiteBackground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
