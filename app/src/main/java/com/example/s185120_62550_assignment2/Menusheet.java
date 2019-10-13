@@ -22,6 +22,11 @@ public class Menusheet extends Fragment implements View.OnClickListener {
         normalButton = sheet.findViewById(R.id.normalButton);
         randomButton = sheet.findViewById(R.id.randomButton);
 
+        // Ensuring the buttons are enabled, if player has played game and returns after they were disabled.
+        greyOverlay.setEnabled(true);
+        normalButton.setEnabled(true);
+        randomButton.setEnabled(true);
+
         greyOverlay.setOnClickListener(this);
         normalButton.setOnClickListener(this);
         randomButton.setOnClickListener(this);
@@ -38,6 +43,11 @@ public class Menusheet extends Fragment implements View.OnClickListener {
             i.putExtra("drmode", false);
             startActivity(i);
         } else if (v == randomButton) {
+
+            greyOverlay.setEnabled(false);
+            normalButton.setEnabled(false);
+            randomButton.setEnabled(false);
+
             Intent i = new Intent(getActivity(), Game.class);
             i.putExtra("drmode", true);
             startActivity(i);

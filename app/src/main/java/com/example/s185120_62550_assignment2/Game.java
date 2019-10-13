@@ -28,13 +28,21 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        galgelogik = new Galgelogik();
+
         // Checks if user expects words from dr.dk or not
         drmode = getIntent().getExtras().getBoolean("drmode");
 
-        galgelogik = new Galgelogik();
+        // Initializes views and buttons
+        guessButton = findViewById(R.id.guessButton);
+        inputField = findViewById(R.id.inputField);
+        wordText = findViewById(R.id.wordText);
+        lettersText = findViewById(R.id.lettersText);
+        galgeImage = findViewById(R.id.galgeImage);
+        info = findViewById(R.id.infoText);
+        guessButton.setOnClickListener(this);
 
-
-        // Starting thread to get words from dr.dk and joining when thread finished
+        // Starts a new thread to get words from dr.dk and joining when thread finished
         if (drmode) {
             try {
                 Thread thread = new Thread() {
@@ -53,16 +61,6 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 finish();
             }
         }
-
-        // Initializes views and buttons
-        guessButton = findViewById(R.id.guessButton);
-        inputField = findViewById(R.id.inputField);
-        wordText = findViewById(R.id.wordText);
-        lettersText = findViewById(R.id.lettersText);
-        galgeImage = findViewById(R.id.galgeImage);
-        info = findViewById(R.id.infoText);
-
-        guessButton.setOnClickListener(this);
 
         resetGame();
     }
