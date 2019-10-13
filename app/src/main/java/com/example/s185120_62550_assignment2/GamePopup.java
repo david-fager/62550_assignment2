@@ -22,13 +22,14 @@ public class GamePopup extends Fragment implements View.OnClickListener {
         normalButton = popup.findViewById(R.id.normalButton);
         randomButton = popup.findViewById(R.id.randomButton);
         sheetButton = popup.findViewById(R.id.docsButton);
-
         normalButton.setOnClickListener(this);
         randomButton.setOnClickListener(this);
         sheetButton.setOnClickListener(this);
 
+        // SeekBars needs the OnSeekBarChangeListener to change the 'progress' (value).
         diffBar = popup.findViewById(R.id.sheetsDiff);
         diffBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            // Changes the global value if the player touches the bar.
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 diffValue = i;
@@ -36,9 +37,9 @@ public class GamePopup extends Fragment implements View.OnClickListener {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
+            // Displays a little toast on the currently chosen value
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(getActivity(), "Difficulty: " + diffValue, Toast.LENGTH_SHORT).show();
@@ -52,6 +53,7 @@ public class GamePopup extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         normalButton.setClickable(false);
         randomButton.setClickable(false);
+        sheetButton.setClickable(false);
 
         // Calls the Game classes method chooseMode, with whether a word from dr.dk is chosen or not
         if (v == normalButton) {

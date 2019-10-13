@@ -53,10 +53,11 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
     // Called from the fragments class
     public void chooseMode(int mode, int diffValue) {
-        // Starts a new thread to get words from dr.dk and joining when thread finished
         if (mode == 1) {
+            // Normal mode with standard words
             galgelogik = new Galgelogik();
         } else if (mode == 2) {
+            // Starts a new thread to get words from dr.dk and joining when thread finished
             try {
                 Thread thread = new Thread() {
                     public void run() {
@@ -74,6 +75,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 finish();
             }
         } else if (mode == 3) {
+            // Asseses whether player chose difficulty 1, 2 or 3, meaning words 1, 12 or 123.
             if (diffValue == 2) {
                 difficulty = "123";
             } else if (diffValue == 1) {
@@ -81,6 +83,8 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             } else {
                 difficulty = "1";
             }
+
+            // Starts a new thread to get words from Google Sheets and joining when thread finished
             try {
                 Thread thread = new Thread() {
                     public void run() {
