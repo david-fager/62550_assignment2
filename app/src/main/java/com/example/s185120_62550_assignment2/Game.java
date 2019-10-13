@@ -22,6 +22,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     private TextView info;
     private ImageView galgeImage;
     private int imageNumber = 1;
+    private String difficulty = "12";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,14 +74,25 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 finish();
             }
         } else if (mode == 3) {
-            String difficulty = "1";
             if (diffValue == 2) {
                 difficulty = "123";
             } else if (diffValue == 1) {
                 difficulty = "12";
+            } else {
+                difficulty = "1";
             }
             try {
-                galgelogik.hentOrdFraRegneark(difficulty);
+                Thread thread = new Thread() {
+                    public void run() {
+                        try {
+                            galgelogik.hentOrdFraRegneark(difficulty);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                thread.start();
+                thread.join();
             } catch (Exception e) {
                 e. printStackTrace();
                 finish();
