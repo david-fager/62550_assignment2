@@ -7,6 +7,19 @@
     android:background="#FFFFFF"
     tools:context=".Game">
 
+    <FrameLayout
+        android:id="@+id/popup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="false"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
     <ImageView
         android:id="@+id/galgeImage"
         android:layout_width="wrap_content"
@@ -51,7 +64,7 @@
         android:id="@+id/wordText"
         android:layout_width="0dp"
         android:layout_height="75dp"
-        android:text="_ _ _ _ _ _ _ _ _ _ _ _ _"
+        android:text="*************"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

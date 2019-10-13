@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
@@ -21,17 +22,11 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     private TextView info;
     private ImageView galgeImage;
     private int imageNumber = 1;
-    private boolean drmode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
-        galgelogik = new Galgelogik();
-
-        // Checks if user expects words from dr.dk or not
-        drmode = getIntent().getExtras().getBoolean("drmode");
 
         // Initializes views and buttons
         guessButton = findViewById(R.id.guessButton);
@@ -42,6 +37,21 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         info = findViewById(R.id.infoText);
         guessButton.setOnClickListener(this);
 
+        galgelogik = new Galgelogik();
+
+        popup();
+
+        resetGame();
+    }
+
+    // Shows the popup fragment asking for gamemode
+    public void popup() {
+        Fragment fragment = new GamePopup();
+        getSupportFragmentManager().beginTransaction().add(R.id.popup, fragment).addToBackStack(null).commit();
+    }
+
+    // Called from the fragments class
+    public void chooseMode(boolean drmode) {
         // Starts a new thread to get words from dr.dk and joining when thread finished
         if (drmode) {
             try {
@@ -60,8 +70,9 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 e.printStackTrace();
                 finish();
             }
+        } else {
+            galgelogik = new Galgelogik();
         }
-
         resetGame();
     }
 
@@ -84,7 +95,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         // Redo button hit - resets the game
         if (guessButton.getText().equals("\u27F2")) {
-            resetGame();
+            popup();
         }
 
         // Empty field when button pressed

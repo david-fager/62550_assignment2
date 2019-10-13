@@ -27,9 +27,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == startButton) {
-            Fragment fragment = new Menusheet();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.sheetFrame, fragment).addToBackStack(null).commit();
+            Intent i = new Intent(this, Game.class);
+            startActivity(i);
 
         } else if (v == helpButton) {
             Intent i = new Intent(this, Help.class);

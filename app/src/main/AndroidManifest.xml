@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Menusheet"></activity>
+        <activity android:name=".GamePopup"></activity>
         <activity android:name=".Help" />
         <activity android:name=".Game" />
         <activity android:name=".Menu">

@@ -4,42 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menusheet">
+    android:background="#4D474747"
+    tools:context=".GamePopup">
 
-    <ImageView
-        android:id="@+id/greyOverlay"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#4D3F3F3F"
-        android:src="@android:color/transparent"
-        app:layout_constraintBottom_toTopOf="@+id/whiteBackground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.214" />
-
-    <ImageView
+    <androidx.cardview.widget.CardView
         android:id="@+id/whiteBackground"
-        android:layout_width="0dp"
-        android:layout_height="190dp"
-        android:background="#FFFFFF"
-        android:src="@android:color/background_light"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.995" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:scaleType="fitXY" />
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/normalButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="70dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_marginBottom="30dp"
         android:background="#0099CC"
+        android:elevation="5dp"
         android:text="Standard ordliste"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/randomButton"
@@ -52,10 +48,11 @@
         android:id="@+id/randomButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="70dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_marginBottom="30dp"
         android:background="#0099CC"
+        android:elevation="5dp"
         android:text="Tilfældigt ord fra dr.dk"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/whiteBackground"
@@ -63,4 +60,17 @@
         app:layout_constraintStart_toStartOf="@+id/whiteBackground"
         app:layout_constraintTop_toTopOf="@+id/whiteBackground"
         app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/Popuptext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:text="Hvordan ønsker du at spille?"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/normalButton"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
+        app:layout_constraintStart_toStartOf="@+id/whiteBackground"
+        app:layout_constraintTop_toTopOf="@+id/whiteBackground" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
