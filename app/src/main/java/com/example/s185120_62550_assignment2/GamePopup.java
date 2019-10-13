@@ -29,6 +29,7 @@ public class GamePopup extends Fragment implements View.OnClickListener {
         normalButton.setClickable(false);
         randomButton.setClickable(false);
 
+        // Calls the Game classes method chooseMode, with whether a word from dr.dk is chosen or not
         if (v == normalButton) {
             if (getActivity() != null) {
                 ((Game) getActivity()).chooseMode(false);
@@ -38,6 +39,7 @@ public class GamePopup extends Fragment implements View.OnClickListener {
                 ((Game) getActivity()).chooseMode(true);
             }
         }
+        // Pops 'back' to the game
         getFragmentManager().popBackStack();
     }
 }
