@@ -129,15 +129,16 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     }
 
     // Checking if the guessed letter was guessed earlier in the game
-    private void letterGuessedEarlier() {
+    private boolean letterGuessedEarlier() {
         for (String letter : galgelogik.getBrugteBogstaver()) {
             if (letter.equals(inputField.getText().toString())) {
                 inputField.setText("");
                 galgelogik.logStatus();
                 System.out.println("LETTER ALREADY GUESSED");
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     // Display used letters (builds a string appended with each guessed letter
@@ -215,7 +216,9 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             return;
         }
 
-        letterGuessedEarlier();
+        if (letterGuessedEarlier()) {
+            return;
+        }
 
         // User guessed a letter
         galgelogik.gætBogstav(inputField.getText().toString().toLowerCase());
