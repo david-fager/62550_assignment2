@@ -2,6 +2,7 @@ package com.example.s185120_62550_assignment2;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -61,6 +62,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         if (mode == 1) {
             // Normal mode with standard words
             galgelogik = new Galgelogik();
+            resetGame();
         } else if (mode == 2) {
             fromDR();
         } else if (mode == 3) {
@@ -75,7 +77,6 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
             fromSheets();
         }
-        resetGame();
     }
 
     // Sets every part of the game screen back to nothing
@@ -95,42 +96,42 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
     // Starts a new thread to get words from dr.dk and joining when thread finished
     private void fromDR() {
-        try {
-            Thread thread = new Thread() {
-                public void run() {
-                    try {
-                        galgelogik.hentOrdFraDr();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+        new AsyncTask() {
+            @Override
+            protected String doInBackground(Object[] objects) {
+                try {
+                    galgelogik.hentOrdFraDr();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            };
-            thread.start();
-            thread.join();
-        } catch (Exception e) {
-            e.printStackTrace();
-            finish();
-        }
+                return "";
+            }
+
+            @Override
+            protected void onPostExecute(Object o) {
+                resetGame();
+            }
+        }.execute();
     }
 
     // Starts a new thread to get words from Google Sheets and joining when thread finished
     private void fromSheets() {
-        try {
-            Thread thread = new Thread() {
-                public void run() {
-                    try {
-                        galgelogik.hentOrdFraRegneark(difficulty);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+        new AsyncTask() {
+            @Override
+            protected String doInBackground(Object[] objects) {
+                try {
+                    galgelogik.hentOrdFraRegneark(difficulty);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            };
-            thread.start();
-            thread.join();
-        } catch (Exception e) {
-            e. printStackTrace();
-            finish();
-        }
+                return "";
+            }
+
+            @Override
+            protected void onPostExecute(Object o) {
+                resetGame();
+            }
+        }.execute();
     }
 
     // Checking if the guessed letter was guessed earlier in the game
