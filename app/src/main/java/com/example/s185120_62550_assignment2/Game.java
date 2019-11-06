@@ -1,5 +1,7 @@
 package com.example.s185120_62550_assignment2;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,11 +25,14 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     private ImageView galgeImage;
     private int imageNumber = 1;
     private String difficulty = "12";
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        preferences = this.getSharedPreferences(String.valueOf(R.string.prefs), Context.MODE_PRIVATE);
 
         // Initializes views and buttons
         guessButton = findViewById(R.id.guessButton);
@@ -193,11 +198,23 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 info.setText("Du vandt! Tillykke.");
                 guessButton.setText("\u27F2");
                 guessButton.setTextSize(40);
+
+                // Updating saved value
+                int temp = preferences.getInt("numberOfWon", 0);
+                temp++;
+                preferences.edit().putInt("numberOfWon", temp).apply();
+                System.out.println("GAME WON SAVING NEW WON VALUE");
             } else if (galgelogik.erSpilletTabt()) {
                 inputField.setEnabled(false);
                 info.setText("Du tabte! Desværre.");
                 guessButton.setText("\u27F2");
                 guessButton.setTextSize(40);
+
+                // Updating saved value
+                int temp = preferences.getInt("numberOfLost", 0);
+                temp++;
+                preferences.edit().putInt("numberOfLost", temp).apply();
+                System.out.println("GAME WON SAVING NEW LOST VALUE");
             }
         }
     }
