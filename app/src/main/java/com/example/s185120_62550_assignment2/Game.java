@@ -57,23 +57,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             // Normal mode with standard words
             galgelogik = new Galgelogik();
         } else if (mode == 2) {
-            // Starts a new thread to get words from dr.dk and joining when thread finished
-            try {
-                Thread thread = new Thread() {
-                    public void run() {
-                        try {
-                            galgelogik.hentOrdFraDr();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
-                thread.start();
-                thread.join();
-            } catch (Exception e) {
-                e.printStackTrace();
-                finish();
-            }
+            fromDR();
         } else if (mode == 3) {
             // Asseses whether player chose difficulty 1, 2 or 3, meaning words 1, 12 or 123.
             if (diffValue == 2) {
@@ -84,23 +68,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 difficulty = "1";
             }
 
-            // Starts a new thread to get words from Google Sheets and joining when thread finished
-            try {
-                Thread thread = new Thread() {
-                    public void run() {
-                        try {
-                            galgelogik.hentOrdFraRegneark(difficulty);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
-                thread.start();
-                thread.join();
-            } catch (Exception e) {
-                e. printStackTrace();
-                finish();
-            }
+            fromSheets();
         }
         resetGame();
     }
@@ -120,21 +88,48 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         System.out.println("GAME RESET");
     }
 
-    @Override
-    public void onClick(View v) {
-        // Redo button hit - resets the game
-        if (guessButton.getText().equals("\u27F2")) {
-            popup();
+    // Starts a new thread to get words from dr.dk and joining when thread finished
+    private void fromDR() {
+        try {
+            Thread thread = new Thread() {
+                public void run() {
+                    try {
+                        galgelogik.hentOrdFraDr();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            thread.start();
+            thread.join();
+        } catch (Exception e) {
+            e.printStackTrace();
+            finish();
         }
+    }
 
-        // Empty field when button pressed
-        if (inputField.getText().toString().equals("")) {
-            galgelogik.logStatus();
-            System.out.println("EMPTY INPUT FIELD");
-            return;
+    // Starts a new thread to get words from Google Sheets and joining when thread finished
+    private void fromSheets() {
+        try {
+            Thread thread = new Thread() {
+                public void run() {
+                    try {
+                        galgelogik.hentOrdFraRegneark(difficulty);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            thread.start();
+            thread.join();
+        } catch (Exception e) {
+            e. printStackTrace();
+            finish();
         }
+    }
 
-        // Checking if the gussed letter was guessed earlier in the game
+    // Checking if the guessed letter was guessed earlier in the game
+    private void letterGuessedEarlier() {
         for (String letter : galgelogik.getBrugteBogstaver()) {
             if (letter.equals(inputField.getText().toString())) {
                 inputField.setText("");
@@ -143,13 +138,10 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 return;
             }
         }
+    }
 
-        // User guessed a letter
-        galgelogik.gætBogstav(inputField.getText().toString().toLowerCase());
-        inputField.setText("");
-        wordText.setText(galgelogik.getSynligtOrd().toUpperCase());
-
-        // Display used letters (builds a string appended with each guessed letter
+    // Display used letters (builds a string appended with each guessed letter
+    private void displayWrongLetters() {
         ArrayList<String> lettersList = galgelogik.getBrugteBogstaver();
         String guessedLetters = "";
         for (String letter : lettersList) {
@@ -162,8 +154,10 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             guessedLetters = guessedLetters.substring(0, guessedLetters.length() - 2);
         }
         lettersText.setText(guessedLetters.toUpperCase());
+    }
 
-        // Updates hangman image
+    // Updates hangman image
+    private void updateHangmanImage() {
         if (!galgelogik.erSidsteBogstavKorrekt()) {
             System.out.println("IMAGE AT: " + imageNumber);
             switch (imageNumber++) {
@@ -187,10 +181,10 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                     break;
             }
         }
+    }
 
-        galgelogik.logStatus();
-
-        // Checks if the game is over, and if so whether the player won or lost.
+    // Checks if the game is over, and if so whether the player won or lost.
+    private void isGameOver() {
         if (galgelogik.erSpilletSlut()) {
             System.out.println("GAME EITHER WON OR LOST");
             if (galgelogik.erSpilletVundet()) {
@@ -205,6 +199,36 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 guessButton.setTextSize(40);
             }
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        // Redo button hit - resets the game
+        if (guessButton.getText().equals("\u27F2")) {
+            popup();
+        }
+
+        // Empty field when button pressed
+        if (inputField.getText().toString().equals("")) {
+            galgelogik.logStatus();
+            System.out.println("EMPTY INPUT FIELD");
+            return;
+        }
+
+        letterGuessedEarlier();
+
+        // User guessed a letter
+        galgelogik.gætBogstav(inputField.getText().toString().toLowerCase());
+        inputField.setText("");
+        wordText.setText(galgelogik.getSynligtOrd().toUpperCase());
+
+        displayWrongLetters();
+
+        updateHangmanImage();
+
+        galgelogik.logStatus();
+
+        isGameOver();
 
     }
 }
