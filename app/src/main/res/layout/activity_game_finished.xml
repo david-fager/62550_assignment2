@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameFinished">
+
+    <Button
+        android:id="@+id/againButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="Spil igen"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/proceed_text"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <Button
+        android:id="@+id/menuButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="Til menuen"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/againButton"
+        app:layout_constraintStart_toStartOf="@+id/againButton"
+        app:layout_constraintTop_toBottomOf="@+id/againButton"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <TextView
+        android:id="@+id/win_loss_text"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="Tillykke med sejren!"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/point_text"
+        android:layout_width="280dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="Du er blevet tildelt et point for at have vundet."
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/win_loss_text" />
+
+    <TextView
+        android:id="@+id/proceed_text"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:gravity="bottom|center_horizontal"
+        android:text="Hvordan vil du fortsætte?"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="@+id/point_text"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/point_text"
+        app:layout_constraintTop_toBottomOf="@+id/point_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

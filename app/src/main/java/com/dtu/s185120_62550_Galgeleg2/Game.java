@@ -1,6 +1,7 @@
 package com.dtu.s185120_62550_Galgeleg2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -195,27 +196,25 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         if (galgelogik.erSpilletSlut()) {
             System.out.println("GAME EITHER WON OR LOST");
             if (galgelogik.erSpilletVundet()) {
-                inputField.setEnabled(false);
-                info.setText("Du vandt! Tillykke.");
-                guessButton.setText("\u27F2");
-                guessButton.setTextSize(40);
-
                 // Updating saved value
                 int temp = preferences.getInt("numberOfWon", 0);
                 temp++;
                 preferences.edit().putInt("numberOfWon", temp).apply();
                 System.out.println("GAME WON SAVING NEW WON VALUE");
-            } else if (galgelogik.erSpilletTabt()) {
-                inputField.setEnabled(false);
-                info.setText("Du tabte! Desværre.");
-                guessButton.setText("\u27F2");
-                guessButton.setTextSize(40);
 
+                Intent intent = new Intent(this, GameFinished.class);
+                intent.putExtra("result", "won");
+                startActivity(intent);
+            } else if (galgelogik.erSpilletTabt()) {
                 // Updating saved value
                 int temp = preferences.getInt("numberOfLost", 0);
                 temp++;
                 preferences.edit().putInt("numberOfLost", temp).apply();
                 System.out.println("GAME WON SAVING NEW LOST VALUE");
+
+                Intent intent = new Intent(this, GameFinished.class);
+                intent.putExtra("result", "loss");
+                startActivity(intent);
             }
         }
     }
