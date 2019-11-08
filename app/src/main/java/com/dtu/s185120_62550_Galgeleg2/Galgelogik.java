@@ -1,4 +1,4 @@
-package com.example.s185120_62550_assignment2;
+package com.dtu.s185120_62550_Galgeleg2;
 
 import java.io.BufferedReader;
 import java.io.IOException;

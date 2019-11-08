@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.s185120_62550_assignment2">
+    package="com.dtu.s185120_62550_Galgeleg2">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GamePopup"></activity>
-        <activity android:name=".Help" />
-        <activity android:name=".Game" />
-        <activity android:name=".Menu">
+        <activity android:name="com.dtu.s185120_62550_Galgeleg2.GamePopup"></activity>
+        <activity android:name="com.dtu.s185120_62550_Galgeleg2.Help" />
+        <activity android:name="com.dtu.s185120_62550_Galgeleg2.Game" />
+        <activity android:name="com.dtu.s185120_62550_Galgeleg2.Menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

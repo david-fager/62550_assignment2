@@ -1,7 +1,6 @@
-package com.example.s185120_62550_assignment2;
+package com.dtu.s185120_62550_Galgeleg2;
 
 import android.os.Bundle;
-import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
