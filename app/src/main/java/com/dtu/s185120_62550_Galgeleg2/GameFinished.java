@@ -26,7 +26,17 @@ public class GameFinished extends AppCompatActivity implements View.OnClickListe
         againButton.setOnClickListener(this);
         menuButton.setOnClickListener(this);
 
-
+        String result = getIntent().getExtras().getString("result");
+        if (result.equals("won")) {
+            win_loss_text.setText("Tillykke med sejren!");
+            point_text.setText("Du er blevet tildelt et point til din score over vundne kampe.");
+        } else if (result.equals("lost")) {
+            win_loss_text.setText("Ærgeligt, du tabte.");
+            point_text.setText("Et point er blevet lagt til dine tabte kampe.");
+        } else {
+            win_loss_text.setText("Umuligt!");
+            point_text.setText("Hvordan kom du hertil? Snyder...");
+        }
 
     }
 

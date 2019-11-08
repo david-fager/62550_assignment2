@@ -213,7 +213,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 System.out.println("GAME WON SAVING NEW LOST VALUE");
 
                 Intent intent = new Intent(this, GameFinished.class);
-                intent.putExtra("result", "loss");
+                intent.putExtra("result", "lost");
                 startActivity(intent);
             }
         }
