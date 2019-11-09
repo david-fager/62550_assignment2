@@ -14,7 +14,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
 
     private Button startButton;
     private Button helpButton;
-    private TextView wonValue, lostValue;
+    private TextView wonValue, lostValue, streakValue;
     private SharedPreferences preferences;
 
     @Override
@@ -29,12 +29,14 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
         helpButton.setOnClickListener(this);
         wonValue = findViewById(R.id.wonValue);
         lostValue = findViewById(R.id.lostValue);
+        streakValue = findViewById(R.id.streakValue);
 
         preferences = this.getSharedPreferences(String.valueOf(R.string.prefs), Context.MODE_PRIVATE);
 
         // Handling the player's stats
         wonValue.setText(String.valueOf(preferences.getInt("numberOfWon", 0)));
         lostValue.setText(String.valueOf(preferences.getInt("numberOfLost", 0)));
+        streakValue.setText(String.valueOf(preferences.getInt("streak", 0)));
     }
 
     @Override

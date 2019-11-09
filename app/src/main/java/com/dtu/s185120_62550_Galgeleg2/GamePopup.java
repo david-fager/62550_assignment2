@@ -13,7 +13,7 @@ public class GamePopup extends Fragment implements View.OnClickListener {
 
     private Button normalButton, randomButton, sheetButton;
     private SeekBar diffBar;
-    private int diffValue = 1;
+    private int diffValue = 12;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View popup = inflater.inflate(R.layout.activity_gamepopup, container, false);

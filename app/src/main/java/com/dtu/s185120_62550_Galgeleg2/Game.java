@@ -66,10 +66,13 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     // Called from the fragments class, sets the mode and/or difficulty value
     public void chooseMode(int mode, int diffValue) {
         if (mode == 1) {
+            System.out.println("NORMAL MODE");
             resetGame();
         } else if (mode == 2) {
+            System.out.println("DR MODE");
             getFromInternet("DR", "");
         } else if (mode == 3) {
+            System.out.println("SHEETS MODE " + diffValue);
             getFromInternet("SHEETS", String.valueOf(diffValue));
         }
     }
@@ -125,6 +128,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
         // Saving input field value and clearing it
         String guessedLetter = inputField.getText().toString().toLowerCase();
+        System.out.println("Player guessed '" + guessedLetter + "'");
         inputField.setText("");
 
         // User typed in a letter to guess
@@ -135,8 +139,11 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
         // If it was a wrong letter, add it to the list and change the image
         if (!galgelogik.erSidsteBogstavKorrekt()) {
+            System.out.println("Guess was wrong");
             displayWrongLetters(guessedLetter);
             galgeImage.setImageResource(imageResources[++imageIndex]);
+        } else {
+            System.out.println("Guess was correct");
         }
 
         // Printing out the status
@@ -180,18 +187,23 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         if (galgelogik.erSpilletVundet()) {
             System.out.println("Player won the game");
 
-            // Updating saved value
+            // Updating saved values
             wonOrLostValue = preferences.getInt("numberOfWon", 0);
             preferences.edit().putInt("numberOfWon", ++wonOrLostValue).apply();
+
+            streakValue = preferences.getInt("streak", 0);
+            preferences.edit().putInt("streak", ++streakValue).apply();
 
             intent = new Intent(this, GameFinished.class);
             intent.putExtra("result", "won").putExtra("word", galgelogik.getOrdet());
         } else if (galgelogik.erSpilletTabt()) {
             System.out.println("Player lost the game");
 
-            // Updating saved value
+            // Updating saved values
             wonOrLostValue = preferences.getInt("numberOfLost", 0);
             preferences.edit().putInt("numberOfLost", ++wonOrLostValue).apply();
+
+            preferences.edit().putInt("streak", 0).apply();
 
             intent = new Intent(this, GameFinished.class);
             intent.putExtra("result", "lost").putExtra("word", galgelogik.getOrdet());
