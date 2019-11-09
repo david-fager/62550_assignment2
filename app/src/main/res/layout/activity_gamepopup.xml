@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4D474747"
+    android:background="#33000000"
     tools:context=".GamePopup">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/whiteBackground"
+        android:id="@+id/whiteBox"
         android:layout_width="match_parent"
         android:layout_height="380dp"
         android:layout_margin="30dp"
@@ -37,9 +37,9 @@
         android:text="Hvordan ønsker du at spille?"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/normalButton"
-        app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
-        app:layout_constraintStart_toStartOf="@+id/whiteBackground"
-        app:layout_constraintTop_toTopOf="@+id/whiteBackground"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBox"
+        app:layout_constraintStart_toStartOf="@+id/whiteBox"
+        app:layout_constraintTop_toTopOf="@+id/whiteBox"
         app:layout_constraintVertical_bias="0.0" />
 
     <View
@@ -63,8 +63,8 @@
         android:elevation="2dp"
         android:text="Standard ordliste"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
-        app:layout_constraintStart_toStartOf="@+id/whiteBackground"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBox"
+        app:layout_constraintStart_toStartOf="@+id/whiteBox"
         app:layout_constraintTop_toBottomOf="@id/Popuptext" />
 
     <View
@@ -88,8 +88,8 @@
         android:text="Tilfældigt ord fra dr.dk"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@id/diff2"
-        app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
-        app:layout_constraintStart_toStartOf="@+id/whiteBackground"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBox"
+        app:layout_constraintStart_toStartOf="@+id/whiteBox"
         app:layout_constraintTop_toBottomOf="@id/normalButton" />
 
     <View
@@ -144,9 +144,9 @@
         android:elevation="2dp"
         android:text="Hent fra Google Sheets"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/whiteBackground"
-        app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
-        app:layout_constraintStart_toStartOf="@+id/whiteBackground" />
+        app:layout_constraintBottom_toBottomOf="@id/whiteBox"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBox"
+        app:layout_constraintStart_toStartOf="@+id/whiteBox" />
 
     <SeekBar
         android:id="@+id/sheetsDiff"

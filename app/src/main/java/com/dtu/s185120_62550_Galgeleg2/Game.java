@@ -12,9 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-
-import java.util.ArrayList;
 
 public class Game extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,10 +22,12 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     private int imageIndex = 0;
     private ImageView galgeImage;
 
+    private ConstraintLayout loading;
     private Galgelogik galgelogik;
     private TextView wordText, lettersText;
     private Button guessButton;
     private EditText inputField;
+    private boolean freshGame = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,8 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         wordText = findViewById(R.id.wordText);
         lettersText = findViewById(R.id.lettersText);
         galgeImage = findViewById(R.id.galgeImage);
+        loading = findViewById(R.id.loadingLayout);
+        loading.setVisibility(View.INVISIBLE);
 
         guessButton.setOnClickListener(this);
 
@@ -51,8 +54,11 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onResume() {
         super.onResume();
-        System.out.println("Game resumed, resetting...");
-        resetGame();
+        if (!freshGame) {
+            System.out.println("Player wants another round, resetting...");
+            resetGame();
+        }
+        freshGame = false;
     }
 
     // Shows the popup fragment asking for gamemode
@@ -85,7 +91,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         inputField.setEnabled(true);
         guessButton.setEnabled(true);
 
-        System.out.println("GAME RESET");
+        System.out.println("Game reset");
 
         galgelogik.logStatus();
     }
@@ -93,6 +99,11 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     // Starts a new thread via asynctask to get words from the internet (either dr.dk or google sheets)
     public void getFromInternet(String mode, String difficulty) {
         new AsyncTask<String, Void, Void>() {
+            @Override
+            protected void onPreExecute() {
+                loading.setVisibility(View.VISIBLE);
+            }
+
             @Override
             protected Void doInBackground(String... strings) {
                 try {
@@ -108,12 +119,8 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             }
 
             @Override
-            protected void onProgressUpdate(Void... values) {
-
-            }
-
-            @Override
             protected void onPostExecute(Void aVoid) {
+                loading.setVisibility(View.INVISIBLE);
                 resetGame();
             }
         }.execute(mode, difficulty);
