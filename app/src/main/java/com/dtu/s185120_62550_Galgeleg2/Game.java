@@ -121,6 +121,37 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         }.execute(mode);
     }
 
+    @Override
+    public void onClick(View v) {
+        // Either an empty input field or letter was already guessed
+        if (inputField.getText().toString().equals("") || letterGuessedEarlier()) {
+            return;
+        }
+
+        // User typed in a letter to guess
+        galgelogik.gætBogstav(inputField.getText().toString().toLowerCase());
+
+        // Clearing the input field
+        inputField.setText("");
+
+        // Updating the visible word
+        wordText.setText(galgelogik.getSynligtOrd().toUpperCase());
+
+        // If it was a wrong letter
+        if (!galgelogik.erSidsteBogstavKorrekt()) {
+            displayWrongLetters();
+            updateHangmanImage();
+        }
+
+        // Printing out the status
+        galgelogik.logStatus();
+
+        // Checks if the game is over
+        if (galgelogik.erSpilletSlut()) {
+            gameOver();
+        }
+    }
+
     // Checking if the guessed letter was guessed earlier in the game
     private boolean letterGuessedEarlier() {
         for (String letter : galgelogik.getBrugteBogstaver()) {
@@ -152,85 +183,50 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
     // Updates hangman image
     private void updateHangmanImage() {
-        if (!galgelogik.erSidsteBogstavKorrekt()) {
-            System.out.println("IMAGE AT: " + imageNumber);
-            switch (imageNumber++) {
-                case 1:
-                    galgeImage.setImageResource(R.drawable.forkert1);
-                    break;
-                case 2:
-                    galgeImage.setImageResource(R.drawable.forkert2);
-                    break;
-                case 3:
-                    galgeImage.setImageResource(R.drawable.forkert3);
-                    break;
-                case 4:
-                    galgeImage.setImageResource(R.drawable.forkert4);
-                    break;
-                case 5:
-                    galgeImage.setImageResource(R.drawable.forkert5);
-                    break;
-                case 6:
-                    galgeImage.setImageResource(R.drawable.forkert6);
-                    break;
-            }
+        switch (imageNumber++) {
+            case 1:
+                galgeImage.setImageResource(R.drawable.forkert1);
+                break;
+            case 2:
+                galgeImage.setImageResource(R.drawable.forkert2);
+                break;
+            case 3:
+                galgeImage.setImageResource(R.drawable.forkert3);
+                break;
+            case 4:
+                galgeImage.setImageResource(R.drawable.forkert4);
+                break;
+            case 5:
+                galgeImage.setImageResource(R.drawable.forkert5);
+                break;
+            case 6:
+                galgeImage.setImageResource(R.drawable.forkert6);
+                break;
         }
     }
 
     // Checks if the game is over, and if so whether the player won or lost.
-    private void isGameOver() {
-        if (galgelogik.erSpilletSlut()) {
-            System.out.println("GAME EITHER WON OR LOST");
-            if (galgelogik.erSpilletVundet()) {
-                // Updating saved value
-                int temp = preferences.getInt("numberOfWon", 0);
-                temp++;
-                preferences.edit().putInt("numberOfWon", temp).apply();
-                System.out.println("GAME WON SAVING NEW WON VALUE");
+    private void gameOver() {
+        if (galgelogik.erSpilletVundet()) {
+            // Updating saved value
+            int temp = preferences.getInt("numberOfWon", 0);
+            temp++;
+            preferences.edit().putInt("numberOfWon", temp).apply();
+            System.out.println("GAME WON SAVING NEW WON VALUE");
 
-                Intent intent = new Intent(this, GameFinished.class);
-                intent.putExtra("result", "won").putExtra("word", galgelogik.getOrdet());
-                startActivity(intent);
-            } else if (galgelogik.erSpilletTabt()) {
-                // Updating saved value
-                int temp = preferences.getInt("numberOfLost", 0);
-                temp++;
-                preferences.edit().putInt("numberOfLost", temp).apply();
-                System.out.println("GAME WON SAVING NEW LOST VALUE");
+            Intent intent = new Intent(this, GameFinished.class);
+            intent.putExtra("result", "won").putExtra("word", galgelogik.getOrdet());
+            startActivity(intent);
+        } else if (galgelogik.erSpilletTabt()) {
+            // Updating saved value
+            int temp = preferences.getInt("numberOfLost", 0);
+            temp++;
+            preferences.edit().putInt("numberOfLost", temp).apply();
+            System.out.println("GAME WON SAVING NEW LOST VALUE");
 
-                Intent intent = new Intent(this, GameFinished.class);
-                intent.putExtra("result", "lost").putExtra("word", galgelogik.getOrdet());
-                startActivity(intent);
-            }
+            Intent intent = new Intent(this, GameFinished.class);
+            intent.putExtra("result", "lost").putExtra("word", galgelogik.getOrdet());
+            startActivity(intent);
         }
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        // Empty field when button pressed
-        if (inputField.getText().toString().equals("")) {
-            galgelogik.logStatus();
-            System.out.println("EMPTY INPUT FIELD");
-            return;
-        }
-
-        if (letterGuessedEarlier()) {
-            return;
-        }
-
-        // User guessed a letter
-        galgelogik.gætBogstav(inputField.getText().toString().toLowerCase());
-        inputField.setText("");
-        wordText.setText(galgelogik.getSynligtOrd().toUpperCase());
-
-        displayWrongLetters();
-
-        updateHangmanImage();
-
-        galgelogik.logStatus();
-
-        isGameOver();
-
     }
 }
