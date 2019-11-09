@@ -18,6 +18,7 @@ public class GameFinished extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_finished);
 
+        // Initialising variables
         win_loss_text = findViewById(R.id.win_loss_text);
         point_text = findViewById(R.id.point_text);
         word2guess_text = findViewById(R.id.word2guess_text);
@@ -27,8 +28,15 @@ public class GameFinished extends AppCompatActivity implements View.OnClickListe
         againButton.setOnClickListener(this);
         menuButton.setOnClickListener(this);
 
+        updateText();
+    }
+
+    // Write different things depending if the player won or lost
+    public void updateText() {
+        // Gets the extras
         word2guess_text.setText(getIntent().getExtras().getString("word"));
         String result = getIntent().getExtras().getString("result");
+
         if (result.equals("won")) {
             win_loss_text.setText("Tillykke med sejren!");
             point_text.setText("Du er blevet tildelt et point til din score over vundne kampe.");
@@ -39,17 +47,14 @@ public class GameFinished extends AppCompatActivity implements View.OnClickListe
             win_loss_text.setText("Umuligt!");
             point_text.setText("Hvordan kom du hertil? Snyder...");
         }
-
     }
-
 
     @Override
     public void onClick(View view) {
         if (view == againButton) {
-            Intent intent = new Intent(this, Game.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            finish(); // back to the Game activity
         } else if (view == menuButton) {
+            // New menu activity, with a clear backstack
             Intent intent = new Intent(this, Menu.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);

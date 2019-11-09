@@ -18,6 +18,7 @@ public class GamePopup extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View popup = inflater.inflate(R.layout.activity_gamepopup, container, false);
 
+        // Initialising variables
         normalButton = popup.findViewById(R.id.normalButton);
         randomButton = popup.findViewById(R.id.randomButton);
         sheetButton = popup.findViewById(R.id.docsButton);
@@ -31,14 +32,22 @@ public class GamePopup extends Fragment implements View.OnClickListener {
             // Changes the global value if the player touches the bar.
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                diffValue = i;
+                if (i == 0) {
+                    diffValue = 1;
+                } else if (i == 1) {
+                    diffValue = 12;
+                } else if (i == 2) {
+                    diffValue = 123;
+                }
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
 
         return popup;
@@ -46,23 +55,16 @@ public class GamePopup extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        normalButton.setClickable(false);
-        randomButton.setClickable(false);
-        sheetButton.setClickable(false);
-
         // Calls the Game classes method chooseMode, with whether a word from dr.dk is chosen or not
         if (v == normalButton) {
-            if (getActivity() != null) {
-                ((Game) getActivity()).chooseMode(1, diffValue);
-            }
+            ((Game) getActivity()).chooseMode(1, 0);
+
         } else if (v == randomButton) {
-            if (getActivity() != null) {
-                ((Game) getActivity()).chooseMode(2, diffValue);
-            }
+            ((Game) getActivity()).chooseMode(2, 0);
+
         } else if (v == sheetButton) {
-            if (getActivity() != null) {
-                ((Game) getActivity()).chooseMode(3, diffValue);
-            }
+            ((Game) getActivity()).chooseMode(3, diffValue);
+
         }
 
         // Closes the fragment this way since there is no backstack on it

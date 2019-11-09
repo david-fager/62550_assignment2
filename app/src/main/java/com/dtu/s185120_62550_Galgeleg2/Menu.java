@@ -21,28 +21,20 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        // Initialising variables
         startButton = findViewById(R.id.startButton);
         startButton.setOnClickListener(this);
         helpButton = findViewById(R.id.helpButton);
         helpButton.setOnClickListener(this);
-
         wonValue = findViewById(R.id.wonValue);
         lostValue = findViewById(R.id.lostValue);
 
         preferences = this.getSharedPreferences(String.valueOf(R.string.prefs), Context.MODE_PRIVATE);
 
+        // Handling the player's stats
         wonValue.setText(String.valueOf(preferences.getInt("numberOfWon", 0)));
         lostValue.setText(String.valueOf(preferences.getInt("numberOfLost", 0)));
-        System.out.println("MENU HAS SET STATS");
-    }
-
-    // TODO: Usikkert om den virker som tænkt
-    @Override
-    protected void onResume() {
-        super.onResume();
-        wonValue.setText(String.valueOf(preferences.getInt("numberOfWon", 0)));
-        lostValue.setText(String.valueOf(preferences.getInt("numberOfLost", 0)));
-        System.out.println("MENU RESUMED, STATS RE-READ");
     }
 
     @Override
@@ -50,7 +42,6 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
         if (v == startButton) {
             Intent i = new Intent(this, Game.class);
             startActivity(i);
-
         } else if (v == helpButton) {
             Intent i = new Intent(this, Help.class);
             startActivity(i);
