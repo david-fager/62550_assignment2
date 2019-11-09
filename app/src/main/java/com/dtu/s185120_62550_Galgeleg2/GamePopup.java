@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -65,7 +64,8 @@ public class GamePopup extends Fragment implements View.OnClickListener {
                 ((Game) getActivity()).chooseMode(3, diffValue);
             }
         }
-        // Pops 'back' to the game
-        getFragmentManager().popBackStack();
+
+        // Closes the fragment this way since there is no backstack on it
+        getFragmentManager().beginTransaction().remove(this).commit();
     }
 }

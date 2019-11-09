@@ -23,7 +23,6 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     private EditText inputField;
     private TextView wordText;
     private TextView lettersText;
-    private TextView info;
     private ImageView galgeImage;
     private int imageNumber = 1;
     private String difficulty = "12";
@@ -42,30 +41,32 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         wordText = findViewById(R.id.wordText);
         lettersText = findViewById(R.id.lettersText);
         galgeImage = findViewById(R.id.galgeImage);
-        info = findViewById(R.id.infoText);
+
         guessButton.setOnClickListener(this);
 
         galgelogik = new Galgelogik();
 
-        popup();
-
         resetGame();
+
+        popup();
     }
 
     // Shows the popup fragment asking for gamemode
     public void popup() {
         Fragment fragment = new GamePopup();
-        getSupportFragmentManager().beginTransaction().add(R.id.popup, fragment).addToBackStack(null).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.popup, fragment).commit();
+        inputField.setEnabled(false);
+        guessButton.setEnabled(false);
     }
 
     // Called from the fragments class
     public void chooseMode(int mode, int diffValue) {
         if (mode == 1) {
-            // Normal mode with standard words
-            galgelogik = new Galgelogik();
             resetGame();
+            inputField.setEnabled(true);
+            guessButton.setEnabled(true);
         } else if (mode == 2) {
-            fromDR();
+            getFromInternet("DR");
         } else if (mode == 3) {
             // Asseses whether player chose difficulty 1, 2 or 3, meaning words 1, 12 or 123.
             if (diffValue == 2) {
@@ -75,8 +76,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             } else {
                 difficulty = "1";
             }
-
-            fromSheets();
+            getFromInternet("SHEETS");
         }
     }
 
@@ -85,54 +85,40 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         galgelogik.nulstil();
         wordText.setText(galgelogik.getSynligtOrd());
         lettersText.setText("");
-        info.setText("Ord at gætte:");
-        inputField.setEnabled(true);
-        guessButton.setTextSize(25);
-        guessButton.setText("GÆT");
-        imageNumber = 1;
         galgeImage.setImageResource(R.drawable.galge);
         galgelogik.logStatus();
         System.out.println("GAME RESET");
     }
 
-    // Starts a new thread to get words from dr.dk and joining when thread finished
-    private void fromDR() {
-        new AsyncTask() {
+    // Starts a new thread via asynctask to get words from the internet (either dr.dk or google sheets)
+    public void getFromInternet(String mode) {
+        new AsyncTask<String, Void, Void>() {
             @Override
-            protected String doInBackground(Object[] objects) {
+            protected Void doInBackground(String... strings) {
                 try {
-                    galgelogik.hentOrdFraDr();
+                    if (strings[0].equals("DR")) {
+                        galgelogik.hentOrdFraDr();
+                    } else if (strings[0].equals("SHEETS")) {
+                        galgelogik.hentOrdFraRegneark(difficulty);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                return "";
+                return null;
             }
 
             @Override
-            protected void onPostExecute(Object o) {
+            protected void onProgressUpdate(Void... values) {
+
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                inputField.setEnabled(true);
+                guessButton.setEnabled(true);
                 resetGame();
             }
-        }.execute();
-    }
-
-    // Starts a new thread to get words from Google Sheets and joining when thread finished
-    private void fromSheets() {
-        new AsyncTask() {
-            @Override
-            protected String doInBackground(Object[] objects) {
-                try {
-                    galgelogik.hentOrdFraRegneark(difficulty);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return "";
-            }
-
-            @Override
-            protected void onPostExecute(Object o) {
-                resetGame();
-            }
-        }.execute();
+        }.execute(mode);
     }
 
     // Checking if the guessed letter was guessed earlier in the game
@@ -221,10 +207,6 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // Redo button hit - resets the game
-        if (guessButton.getText().equals("\u27F2")) {
-            popup();
-        }
 
         // Empty field when button pressed
         if (inputField.getText().toString().equals("")) {
