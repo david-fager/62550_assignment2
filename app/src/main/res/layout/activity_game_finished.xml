@@ -11,28 +11,30 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="280dp"
         android:layout_height="70dp"
-        android:background="@android:color/holo_blue_dark"
+        android:background="#0099CC"
         android:text="Spil igen"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/proceed_text"
-        app:layout_constraintVertical_bias="0.100000024" />
+        app:layout_constraintVertical_bias="0.050000012" />
 
     <Button
         android:id="@+id/menuButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:background="@android:color/holo_blue_dark"
+        android:background="#0099CC"
         android:text="Til menuen"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/againButton"
         app:layout_constraintStart_toStartOf="@+id/againButton"
         app:layout_constraintTop_toBottomOf="@+id/againButton"
-        app:layout_constraintVertical_bias="0.100000024" />
+        app:layout_constraintVertical_bias="0.15" />
 
     <TextView
         android:id="@+id/win_loss_text"
@@ -54,8 +56,9 @@
         android:text="Du er blevet tildelt et point for at have vundet."
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/win_loss_text" />
+        app:layout_constraintTop_toBottomOf="@+id/word2guess_text" />
 
     <TextView
         android:id="@+id/proceed_text"
@@ -68,5 +71,27 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/point_text"
         app:layout_constraintTop_toBottomOf="@+id/point_text" />
+
+    <TextView
+        android:id="@+id/wordInfo"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="Ordet var:"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/win_loss_text"
+        app:layout_constraintStart_toStartOf="@+id/win_loss_text"
+        app:layout_constraintTop_toBottomOf="@+id/win_loss_text" />
+
+    <TextView
+        android:id="@+id/word2guess_text"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="programmering"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/wordInfo"
+        app:layout_constraintStart_toStartOf="@+id/wordInfo"
+        app:layout_constraintTop_toBottomOf="@+id/wordInfo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,88 +25,140 @@
             android:layout_height="match_parent"
             android:background="#FFFFFF"
             android:scaleType="fitXY" />
+
     </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/normalButton"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="30dp"
-        android:background="#0099CC"
-        android:elevation="5dp"
-        android:text="Standard ordliste"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/randomButton"
-        app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
-        app:layout_constraintStart_toStartOf="@+id/whiteBackground"
-        app:layout_constraintTop_toTopOf="@+id/whiteBackground"
-        app:layout_constraintVertical_bias="0" />
-
-    <Button
-        android:id="@+id/randomButton"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="180dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="30dp"
-        android:background="#0099CC"
-        android:elevation="5dp"
-        android:text="Tilfældigt ord fra dr.dk"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/whiteBackground"
-        app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
-        app:layout_constraintStart_toStartOf="@+id/whiteBackground"
-        app:layout_constraintTop_toTopOf="@+id/whiteBackground"
-        app:layout_constraintVertical_bias="0" />
-
-    <Button
-        android:id="@+id/docsButton"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="290dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="30dp"
-        android:background="#0099CC"
-        android:elevation="5dp"
-        android:text="Hent fra Google Sheets"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/whiteBackground"
-        app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
-        app:layout_constraintStart_toStartOf="@+id/whiteBackground"
-        app:layout_constraintTop_toTopOf="@+id/whiteBackground"
-        app:layout_constraintVertical_bias="0" />
 
     <TextView
         android:id="@+id/Popuptext"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:elevation="5dp"
+        android:layout_height="60dp"
+        android:elevation="2dp"
+        android:gravity="bottom|center_horizontal"
         android:text="Hvordan ønsker du at spille?"
-        android:textSize="25sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/normalButton"
         app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
         app:layout_constraintStart_toStartOf="@+id/whiteBackground"
         app:layout_constraintTop_toTopOf="@+id/whiteBackground"
         app:layout_constraintVertical_bias="0.0" />
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@id/normalButton"
+        app:layout_constraintEnd_toEndOf="@id/Popuptext"
+        app:layout_constraintStart_toStartOf="@id/Popuptext"
+        app:layout_constraintTop_toBottomOf="@id/Popuptext" />
+
+    <Button
+        android:id="@+id/normalButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:background="#0099CC"
+        android:elevation="2dp"
+        android:text="Standard ordliste"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
+        app:layout_constraintStart_toStartOf="@+id/whiteBackground"
+        app:layout_constraintTop_toBottomOf="@id/Popuptext" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@id/randomButton"
+        app:layout_constraintEnd_toEndOf="@id/normalButton"
+        app:layout_constraintStart_toStartOf="@id/normalButton"
+        app:layout_constraintTop_toBottomOf="@id/normalButton" />
+
+    <Button
+        android:id="@+id/randomButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="#0099CC"
+        android:elevation="2dp"
+        android:text="Tilfældigt ord fra dr.dk"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@id/diff2"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
+        app:layout_constraintStart_toStartOf="@+id/whiteBackground"
+        app:layout_constraintTop_toBottomOf="@id/normalButton" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@id/diff2"
+        app:layout_constraintEnd_toEndOf="@id/randomButton"
+        app:layout_constraintStart_toStartOf="@id/randomButton"
+        app:layout_constraintTop_toBottomOf="@id/randomButton" />
+
+    <TextView
+        android:id="@+id/diff1"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:gravity="end"
+        android:text="1"
+        app:layout_constraintBottom_toTopOf="@id/sheetsDiff"
+        app:layout_constraintStart_toStartOf="@id/sheetsDiff" />
+
+    <TextView
+        android:id="@+id/diff2"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:gravity="center_horizontal"
+        android:text="2"
+        app:layout_constraintBottom_toTopOf="@id/sheetsDiff"
+        app:layout_constraintEnd_toStartOf="@id/diff3"
+        app:layout_constraintStart_toEndOf="@id/diff1" />
+
+    <TextView
+        android:id="@+id/diff3"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:gravity="start"
+        android:text="3"
+        app:layout_constraintBottom_toTopOf="@id/sheetsDiff"
+        app:layout_constraintEnd_toEndOf="@id/sheetsDiff" />
+
+    <Button
+        android:id="@+id/docsButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="40dp"
+        android:background="#0099CC"
+        android:elevation="2dp"
+        android:text="Hent fra Google Sheets"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/whiteBackground"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBackground"
+        app:layout_constraintStart_toStartOf="@+id/whiteBackground" />
+
     <SeekBar
         android:id="@+id/sheetsDiff"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="260dp"
-        android:elevation="5dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="2dp"
         android:max="2"
         android:progress="1"
-        android:progressTint="#FF0000"
+        android:progressTint="#0099CC"
         app:layout_constraintBottom_toTopOf="@+id/docsButton"
         app:layout_constraintEnd_toEndOf="@+id/docsButton"
-        app:layout_constraintStart_toStartOf="@+id/docsButton"
-        app:layout_constraintTop_toTopOf="@+id/whiteBackground" />
+        app:layout_constraintStart_toStartOf="@+id/docsButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

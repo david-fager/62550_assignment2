@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class GameFinished extends AppCompatActivity implements View.OnClickListener {
 
-    TextView win_loss_text, point_text;
+    TextView win_loss_text, point_text, word2guess_text;
     Button againButton, menuButton;
 
     @Override
@@ -20,12 +20,14 @@ public class GameFinished extends AppCompatActivity implements View.OnClickListe
 
         win_loss_text = findViewById(R.id.win_loss_text);
         point_text = findViewById(R.id.point_text);
+        word2guess_text = findViewById(R.id.word2guess_text);
         againButton = findViewById(R.id.againButton);
         menuButton = findViewById(R.id.menuButton);
 
         againButton.setOnClickListener(this);
         menuButton.setOnClickListener(this);
 
+        word2guess_text.setText(getIntent().getExtras().getString("word"));
         String result = getIntent().getExtras().getString("result");
         if (result.equals("won")) {
             win_loss_text.setText("Tillykke med sejren!");

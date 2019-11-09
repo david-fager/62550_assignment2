@@ -36,14 +36,10 @@ public class GamePopup extends Fragment implements View.OnClickListener {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
-            // Displays a little toast on the currently chosen value
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(getActivity(), "Difficulty: " + diffValue, Toast.LENGTH_SHORT).show();
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
         return popup;

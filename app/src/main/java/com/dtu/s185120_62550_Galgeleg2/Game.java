@@ -203,7 +203,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 System.out.println("GAME WON SAVING NEW WON VALUE");
 
                 Intent intent = new Intent(this, GameFinished.class);
-                intent.putExtra("result", "won");
+                intent.putExtra("result", "won").putExtra("word", galgelogik.getOrdet());
                 startActivity(intent);
             } else if (galgelogik.erSpilletTabt()) {
                 // Updating saved value
@@ -213,7 +213,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 System.out.println("GAME WON SAVING NEW LOST VALUE");
 
                 Intent intent = new Intent(this, GameFinished.class);
-                intent.putExtra("result", "lost");
+                intent.putExtra("result", "lost").putExtra("word", galgelogik.getOrdet());
                 startActivity(intent);
             }
         }
