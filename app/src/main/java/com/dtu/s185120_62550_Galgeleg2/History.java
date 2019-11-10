@@ -21,7 +21,7 @@ public class History extends AppCompatActivity implements AdapterView.OnItemClic
 
     private SharedPreferences preferences;
     private String[] roundnumbers, words, mistakes;
-    private int index = 0;
+    private int arrayLength = 0;
     private int[] imageResources = {R.drawable.galge, R.drawable.forkert1, R.drawable.forkert2,
             R.drawable.forkert3, R.drawable.forkert4, R.drawable.forkert5, R.drawable.forkert6};
 
@@ -34,6 +34,7 @@ public class History extends AppCompatActivity implements AdapterView.OnItemClic
         roundnumbers = preferences.getString("historyRoundnumbers", "").split(",");
         words = preferences.getString("historyWords", "").split(",");
         mistakes = preferences.getString("historyMistakes", "").split(",");
+        arrayLength = mistakes.length - 1;
 
         // Printing out the history
         for (int i = 0; i < words.length; i++) {
@@ -58,20 +59,19 @@ public class History extends AppCompatActivity implements AdapterView.OnItemClic
 
                 // Setting the visual elements to the right variables
                     ImageView galge = view.findViewById(R.id.element_galge_image);
-                    galge.setImageResource(imageResources[Integer.parseInt(mistakes[index])]);
+                    galge.setImageResource(imageResources[Integer.parseInt(mistakes[(arrayLength - position)])]);
                     TextView roundText = view.findViewById(R.id.element_round_nr_text);
-                    roundText.setText(roundnumbers[index]);
+                    roundText.setText(roundnumbers[(arrayLength - position)]);
                     TextView wordText = view.findViewById(R.id.element_word_text);
-                    wordText.setText(words[index]);
+                    wordText.setText(words[(arrayLength - position)]);
                     TextView mistakeText = view.findViewById(R.id.element_mistakes_text);
-                    mistakeText.setText(mistakes[index] + " / 6");
+                    mistakeText.setText(mistakes[(arrayLength - position)] + " / 6");
                     TextView wonOrLost = view.findViewById(R.id.element_won_or_lost);
-                    if (mistakes[index].equals("6")) {
+                    if (mistakes[(arrayLength - position)].equals("6")) {
                         wonOrLost.setText("Lost");
                     } else {
                         wonOrLost.setText("Won");
                     }
-                    index++;
 
                 return view;
             }
