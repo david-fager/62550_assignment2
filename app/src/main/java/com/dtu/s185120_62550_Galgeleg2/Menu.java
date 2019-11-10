@@ -12,8 +12,7 @@ import android.widget.TextView;
 
 public class Menu extends AppCompatActivity implements View.OnClickListener {
 
-    private Button startButton;
-    private Button helpButton;
+    private Button startButton, historyButton, helpButton;
     private TextView wonValue, lostValue, streakValue;
     private SharedPreferences preferences;
 
@@ -25,6 +24,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
         // Initialising variables
         startButton = findViewById(R.id.startButton);
         startButton.setOnClickListener(this);
+        historyButton = findViewById(R.id.historyButton);
+        historyButton.setOnClickListener(this);
         helpButton = findViewById(R.id.helpButton);
         helpButton.setOnClickListener(this);
         wonValue = findViewById(R.id.wonValue);
@@ -41,12 +42,14 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        Intent intent = null;
         if (v == startButton) {
-            Intent i = new Intent(this, Game.class);
-            startActivity(i);
+            intent = new Intent(this, Game.class);
+        } else if (v == historyButton) {
+            intent = new Intent(this, History.class);
         } else if (v == helpButton) {
-            Intent i = new Intent(this, Help.class);
-            startActivity(i);
+            intent = new Intent(this, Help.class);
         }
+        startActivity(intent);
     }
 }

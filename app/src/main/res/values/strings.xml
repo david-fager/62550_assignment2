@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">s185120_62550_Galgeleg2</string>
     <string name="prefs">prefs</string>
+    <string name="oldGames">oldGames</string>
 </resources>
