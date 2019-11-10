@@ -31,7 +31,7 @@ public class History extends AppCompatActivity implements AdapterView.OnItemClic
         String[] words = preferences.getString("historyWords", "").split(",");
         String[] mistakes = preferences.getString("historyMistakes", "").split(",");
 
-        for (int i = 0; i < words.length - 1; i++) {
+        for (int i = 0; i < words.length; i++) {
             System.out.println("Round: " + roundnumbers[i] + ", word: " + words[i] + ", mistakes: " + mistakes[i]);
         }
 
