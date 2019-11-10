@@ -160,6 +160,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
         // Checks if the game is over
         if (galgelogik.erSpilletSlut()) {
+            saveToHistory();
             gameOver();
         }
     }
@@ -220,4 +221,11 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
         startActivity(intent);
     }
+
+    private void saveToHistory() {
+
+
+
+    }
+
 }

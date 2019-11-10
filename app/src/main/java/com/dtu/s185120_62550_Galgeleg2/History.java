@@ -16,10 +16,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class History extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
@@ -66,13 +63,13 @@ public class History extends AppCompatActivity implements AdapterView.OnItemClic
         Arrays.fill(length, "");
 
         ListView listView = new ListView(this);
-        listView.setAdapter(new ArrayAdapter(this, R.layout.custom_history_list, R.id.list_header, length) {
+        listView.setAdapter(new ArrayAdapter(this, R.layout.custom_history_list, R.id.element_word_text, length) {
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
 
-                TextView textView = view.findViewById(R.id.list_header);
+                TextView textView = view.findViewById(R.id.element_word_text);
                 textView.setText("HEJ " + position);
 
                 return view;

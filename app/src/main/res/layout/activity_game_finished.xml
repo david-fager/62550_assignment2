@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/point_text" />
 
     <TextView
-        android:id="@+id/wordInfo"
+        android:id="@+id/word_info"
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:gravity="center"
@@ -90,8 +90,8 @@
         android:gravity="center"
         android:text="programmering"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/wordInfo"
-        app:layout_constraintStart_toStartOf="@+id/wordInfo"
-        app:layout_constraintTop_toBottomOf="@+id/wordInfo" />
+        app:layout_constraintEnd_toEndOf="@+id/word_info"
+        app:layout_constraintStart_toStartOf="@+id/word_info"
+        app:layout_constraintTop_toBottomOf="@+id/word_info" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
