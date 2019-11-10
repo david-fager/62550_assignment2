@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
 
+// This class is made by Jacob Nordfalk in the DTU course 62550 and given as part of the 'Galgeleg' assignment
 public class Galgelogik {
   /** AHT afprøvning er muligeOrd synlig på pakkeniveau */
   ArrayList<String> muligeOrd = new ArrayList<String>();

@@ -99,6 +99,8 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     }
 
     // Starts a new thread via asynctask to get words from the internet (either dr.dk or google sheets)
+    // This AsyncTask is inspired by Jacob Nordfalk's teaching in DTU's
+    // course 62550 lecture 09, video 'Android Lektion 6.2 Flertrådet programmering - AsyncTask'.
     public void getFromInternet(String mode, String difficulty) {
         new AsyncTask<String, Void, Void>() {
             @Override
