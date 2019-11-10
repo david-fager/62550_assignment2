@@ -222,12 +222,16 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         startActivity(intent);
     }
 
+    // Saves the number of the round, the word supposed to be guessed/was guessed and the number of mistakes
     private void saveToHistory() {
 
-        SharedPreferences preferences = this.getSharedPreferences(String.valueOf(R.string.oldGames), Context.MODE_PRIVATE);
+        SharedPreferences preferences = this.getSharedPreferences(String.valueOf(R.string.gameHistory), Context.MODE_PRIVATE);
 
+        // The round numbers needs to be incremented for each save, this is done by
+        // reading the last round number value and incrementing it, then saving it again
         String roundnumbers = preferences.getString("historyRoundnumbers", "");
         String[] splitNumbers = roundnumbers.split(",");
+        // If its the very first round, then start by saving a '1,'
         if (!splitNumbers[0].equals("")) {
             int lastNumber = Integer.parseInt(splitNumbers[splitNumbers.length - 1]);
             roundnumbers += ++lastNumber + ",";
@@ -236,10 +240,12 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         }
         preferences.edit().putString("historyRoundnumbers", roundnumbers).apply();
 
+        // Adding the latest word to a comma-separated string
         String words = preferences.getString("historyWords", "");
         words += galgelogik.getOrdet() + ",";
         preferences.edit().putString("historyWords", words).apply();
 
+        // Adding the amount of mistakes to a comma-separated string
         String mistakes = preferences.getString("historyMistakes", "");
         mistakes += imageIndex + ",";
         preferences.edit().putString("historyMistakes", mistakes).apply();
