@@ -32,6 +32,11 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
         lostValue = findViewById(R.id.lostValue);
         streakValue = findViewById(R.id.streakValue);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         preferences = this.getSharedPreferences(String.valueOf(R.string.prefs), Context.MODE_PRIVATE);
 
         // Handling the player's stats
