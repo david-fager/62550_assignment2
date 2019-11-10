@@ -40,7 +40,7 @@ public class GameFinished extends AppCompatActivity implements View.OnClickListe
 
         if (result.equals("won")) {
             win_loss_text.setText("Tillykke med sejren!");
-            point_text.setText("Du gættede " + mistakes + " ud af 6 forkert.");
+            point_text.setText("Du havde " + mistakes + " forkerte bogstaver ud af 6 tilladte.");
         } else if (result.equals("lost")) {
             win_loss_text.setText("Ærgeligt, du tabte.");
             point_text.setText("Bedre held næste gang.");
