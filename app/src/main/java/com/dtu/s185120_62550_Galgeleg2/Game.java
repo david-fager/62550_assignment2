@@ -87,6 +87,8 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     public void resetGame() {
         galgelogik.nulstil();
         wordText.setText(galgelogik.getSynligtOrd());
+        lettersText.setText("");
+        galgeImage.setImageResource(imageResources[(imageIndex = 0)]);
 
         inputField.setEnabled(true);
         guessButton.setEnabled(true);
