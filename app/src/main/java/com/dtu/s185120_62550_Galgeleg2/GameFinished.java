@@ -20,7 +20,7 @@ public class GameFinished extends AppCompatActivity implements View.OnClickListe
 
         // Initialising variables
         win_loss_text = findViewById(R.id.win_loss_text);
-        point_text = findViewById(R.id.point_text);
+        point_text = findViewById(R.id.ekstra_text);
         word2guess_text = findViewById(R.id.word2guess_text);
         againButton = findViewById(R.id.againButton);
         menuButton = findViewById(R.id.menuButton);
@@ -36,13 +36,14 @@ public class GameFinished extends AppCompatActivity implements View.OnClickListe
         // Gets the extras
         word2guess_text.setText(getIntent().getExtras().getString("word"));
         String result = getIntent().getExtras().getString("result");
+        int mistakes = getIntent().getExtras().getInt("mistakes");
 
         if (result.equals("won")) {
             win_loss_text.setText("Tillykke med sejren!");
-            point_text.setText("Du er blevet tildelt et point til din score over vundne kampe.");
+            point_text.setText("Du gættede " + mistakes + " ud af 6 forkert.");
         } else if (result.equals("lost")) {
             win_loss_text.setText("Ærgeligt, du tabte.");
-            point_text.setText("Et point er blevet lagt til dine tabte kampe.");
+            point_text.setText("Bedre held næste gang.");
         } else {
             win_loss_text.setText("Umuligt!");
             point_text.setText("Hvordan kom du hertil? Snyder...");

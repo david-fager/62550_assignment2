@@ -40,7 +40,8 @@ public class History extends AppCompatActivity implements AdapterView.OnItemClic
             System.out.println("Round: " + roundnumbers[i] + ", word: " + words[i] + ", mistakes: " + mistakes[i]);
         }
 
-        // For simplicity, an empty string array called length is given for adapter to set amount of list elements
+        // For simplicity, an empty string array called length is given for adapter to
+        // set amount of list elements. A 0 length array is given if the saved values are empty
         String[] length = new String[0];
         if (!mistakes[0].equals("")) {
             length = new String[mistakes.length];

@@ -19,7 +19,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
     private int[] imageResources = {R.drawable.galge, R.drawable.forkert1, R.drawable.forkert2,
             R.drawable.forkert3, R.drawable.forkert4, R.drawable.forkert5, R.drawable.forkert6};
-    private int imageIndex = 0;
+    private int numberOfMistakes = 0;
     private ImageView galgeImage;
 
     private ConstraintLayout loading;
@@ -88,7 +88,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         galgelogik.nulstil();
         wordText.setText(galgelogik.getSynligtOrd());
         lettersText.setText("");
-        galgeImage.setImageResource(imageResources[(imageIndex = 0)]);
+        galgeImage.setImageResource(imageResources[(numberOfMistakes = 0)]);
 
         inputField.setEnabled(true);
         guessButton.setEnabled(true);
@@ -150,7 +150,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         if (!galgelogik.erSidsteBogstavKorrekt()) {
             System.out.println("Guess was wrong");
             displayWrongLetters(guessedLetter);
-            galgeImage.setImageResource(imageResources[++imageIndex]);
+            galgeImage.setImageResource(imageResources[++numberOfMistakes]);
         } else {
             System.out.println("Guess was correct");
         }
@@ -205,7 +205,9 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             preferences.edit().putInt("streak", ++streakValue).apply();
 
             intent = new Intent(this, GameFinished.class);
-            intent.putExtra("result", "won").putExtra("word", galgelogik.getOrdet());
+            intent.putExtra("result", "won");
+            intent.putExtra("word", galgelogik.getOrdet());
+            intent.putExtra("mistakes", numberOfMistakes);
         } else if (galgelogik.erSpilletTabt()) {
             System.out.println("Player lost the game");
 
@@ -216,7 +218,9 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             preferences.edit().putInt("streak", 0).apply();
 
             intent = new Intent(this, GameFinished.class);
-            intent.putExtra("result", "lost").putExtra("word", galgelogik.getOrdet());
+            intent.putExtra("result", "lost");
+            intent.putExtra("word", galgelogik.getOrdet());
+            intent.putExtra("mistakes", numberOfMistakes);
         }
 
         startActivity(intent);
@@ -247,7 +251,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
         // Adding the amount of mistakes to a comma-separated string
         String mistakes = preferences.getString("historyMistakes", "");
-        mistakes += imageIndex + ",";
+        mistakes += numberOfMistakes + ",";
         preferences.edit().putString("historyMistakes", mistakes).apply();
 
     }
