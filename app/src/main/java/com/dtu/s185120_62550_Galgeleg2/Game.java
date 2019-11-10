@@ -224,7 +224,25 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
     private void saveToHistory() {
 
+        SharedPreferences preferences = this.getSharedPreferences(String.valueOf(R.string.oldGames), Context.MODE_PRIVATE);
 
+        String roundnumbers = preferences.getString("historyRoundnumbers", "");
+        String[] splitNumbers = roundnumbers.split(",");
+        if (!splitNumbers[0].equals("")) {
+            int lastNumber = Integer.parseInt(splitNumbers[splitNumbers.length - 1]);
+            roundnumbers += ++lastNumber + ",";
+        } else {
+            roundnumbers = "1,";
+        }
+        preferences.edit().putString("historyRoundnumbers", roundnumbers).apply();
+
+        String words = preferences.getString("historyWords", "");
+        words += galgelogik.getOrdet() + ",";
+        preferences.edit().putString("historyWords", words).apply();
+
+        String mistakes = preferences.getString("historyMistakes", "");
+        mistakes += imageIndex + ",";
+        preferences.edit().putString("historyMistakes", mistakes).apply();
 
     }
 

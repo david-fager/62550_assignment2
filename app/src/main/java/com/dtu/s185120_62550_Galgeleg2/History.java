@@ -27,37 +27,13 @@ public class History extends AppCompatActivity implements AdapterView.OnItemClic
         super.onCreate(savedInstanceState);
 
         preferences = this.getSharedPreferences(String.valueOf(R.string.oldGames), Context.MODE_PRIVATE);
-        List<String> list = new ArrayList<>();
-        list.add("hej");
-        list.add("med");
-        list.add("dig");
-
-        StringBuilder csv = new StringBuilder();
-        for (String string : list) {
-            csv.append(string);
-            csv.append(",");
-        }
-        preferences.edit().putString("historyWords", csv.toString()).apply();
-
-
-        List<String> list2 = new ArrayList<>();
-        list2.add("jeg");
-        list2.add("hedder");
-        list2.add("kaj");
-        StringBuilder csv2 = new StringBuilder();
-        for (String string : list2) {
-            csv2.append(string);
-            csv2.append(",");
-        }
-        String added = preferences.getString("historyWords", "");
-        added += csv2.toString();
-        preferences.edit().putString("historyWords", added).apply();
-
+        String[] roundnumbers = preferences.getString("historyRoundnumbers", "").split(",");
         String[] words = preferences.getString("historyWords", "").split(",");
-        for (String string : words) {
-            System.out.println(string);
-        }
+        String[] mistakes = preferences.getString("historyMistakes", "").split(",");
 
+        for (int i = 0; i < words.length - 1; i++) {
+            System.out.println("Round: " + roundnumbers[i] + ", word: " + words[i] + ", mistakes: " + mistakes[i]);
+        }
 
         String[] length = new String[50];
         Arrays.fill(length, "");
