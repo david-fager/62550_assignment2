@@ -18,9 +18,8 @@
         android:id="@+id/word_info"
         android:layout_width="75dp"
         android:layout_height="50dp"
-        android:gravity="center_vertical"
+        android:gravity="center_vertical|end"
         android:text="Word:"
-        android:textAlignment="textEnd"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/element_galge_image"
         app:layout_constraintTop_toBottomOf="@+id/round_nr_info" />
@@ -29,9 +28,8 @@
         android:id="@+id/mistakes_info"
         android:layout_width="0dp"
         android:layout_height="25dp"
-        android:gravity="center_vertical"
+        android:gravity="center_vertical|end"
         android:text="Mistakes:"
-        android:textAlignment="textEnd"
         app:layout_constraintBottom_toBottomOf="@+id/element_galge_image"
         app:layout_constraintEnd_toEndOf="@+id/word_info"
         app:layout_constraintStart_toEndOf="@+id/element_galge_image"
@@ -53,13 +51,12 @@
 
     <TextView
         android:id="@+id/element_mistakes_text"
-        android:layout_width="0dp"
+        android:layout_width="150dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:gravity="center_vertical"
         android:text="5"
         app:layout_constraintBottom_toBottomOf="@+id/mistakes_info"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/mistakes_info"
         app:layout_constraintTop_toTopOf="@+id/mistakes_info" />
 
@@ -67,9 +64,8 @@
         android:id="@+id/round_nr_info"
         android:layout_width="0dp"
         android:layout_height="25dp"
-        android:gravity="center_vertical"
+        android:gravity="center_vertical|end"
         android:text="Round nr.:"
-        android:textAlignment="textEnd"
         app:layout_constraintEnd_toEndOf="@+id/word_info"
         app:layout_constraintStart_toEndOf="@+id/element_galge_image"
         app:layout_constraintTop_toTopOf="parent" />
@@ -82,9 +78,24 @@
         android:gravity="center_vertical"
         android:text="Programmering"
         android:textSize="24sp"
+        android:maxLines="1"
         app:layout_constraintBottom_toBottomOf="@+id/word_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/word_info"
         app:layout_constraintTop_toTopOf="@+id/word_info" />
+
+    <TextView
+        android:id="@+id/element_won_or_lost"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center_vertical|end"
+        android:text="lost"
+        android:textColor="#636363"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/element_mistakes_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/element_mistakes_text"
+        app:layout_constraintTop_toTopOf="@+id/element_mistakes_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
