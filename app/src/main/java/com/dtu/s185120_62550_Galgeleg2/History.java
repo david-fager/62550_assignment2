@@ -70,9 +70,9 @@ public class History extends AppCompatActivity implements AdapterView.OnItemClic
                     mistakeText.setText(mistakes[(arrayLength - position)] + " / 6");
                     TextView wonOrLost = view.findViewById(R.id.element_won_or_lost);
                     if (mistakes[(arrayLength - position)].equals("6")) {
-                        wonOrLost.setText("Lost");
+                        wonOrLost.setText("Tabt");
                     } else {
-                        wonOrLost.setText("Won");
+                        wonOrLost.setText("Vundet");
                     }
 
                 return view;
