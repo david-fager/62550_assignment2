@@ -14,15 +14,19 @@
         android:layout_marginTop="25dp"
         android:text="GALGELEG"
         android:textSize="45sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/streakInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,13 +81,14 @@
         android:id="@+id/streakInfo"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:gravity="center"
         android:text="STREAK"
         android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/streakValue"
@@ -101,15 +106,17 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:layout_marginRight="70dp"
         android:background="@drawable/roundedbutton"
         android:text="begynd"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/streakValue" />
+        app:layout_constraintTop_toBottomOf="@+id/streakValue"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/historyButton"
@@ -117,12 +124,12 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="25dp"
         android:layout_marginRight="70dp"
         android:background="@drawable/roundedbutton"
         android:text="Historik"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/helpButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startButton" />
@@ -133,14 +140,15 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="25dp"
         android:layout_marginRight="70dp"
         android:background="@drawable/roundedbutton"
         android:text="hjælp"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/historyButton" />
+        app:layout_constraintTop_toBottomOf="@+id/startButton"
+        app:layout_constraintVertical_bias="0.55" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
