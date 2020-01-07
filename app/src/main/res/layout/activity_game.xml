@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loadingLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="#1A000000"
         android:elevation="3dp"
         android:visibility="invisible"
@@ -48,14 +48,11 @@
         android:id="@+id/galgeImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.05"
         app:srcCompat="@drawable/galge" />
 
     <TextView
@@ -73,86 +70,420 @@
         android:id="@+id/infoText"
         android:layout_width="0dp"
         android:layout_height="25dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Ord at gætte:"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:text="Ordet der skal gættes:"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/galgeImage"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/galgeImage" />
 
     <TextView
         android:id="@+id/wordText"
         android:layout_width="0dp"
         android:layout_height="75dp"
+        android:gravity="center"
+        android:text="***********"
         android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="@+id/infoText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/galgeImage"
-        app:layout_constraintTop_toBottomOf="@+id/infoText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/infoText"
+        app:layout_constraintTop_toBottomOf="@+id/infoText" />
 
-    <TextView
-        android:id="@+id/unused"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="25dp"
-        android:text="Forkerte bogstaver:"
-        android:textSize="18sp"
+        android:layout_height="180dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/wordText"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/galgeImage"
-        app:layout_constraintTop_toBottomOf="@+id/wordText"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/lettersText"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/galgeImage"
-        app:layout_constraintEnd_toEndOf="@+id/unused"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/galgeImage"
-        app:layout_constraintTop_toBottomOf="@+id/unused"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/inputField"
-        android:layout_width="0dp"
-        android:layout_height="75dp"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Gæt på et bogstav"
-        android:maxLength="1"
-        android:singleLine="true"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guessButton"
-        app:layout_constraintStart_toStartOf="@+id/galgeImage"
-        app:layout_constraintTop_toBottomOf="@+id/galgeImage"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/guessButton"
-        android:layout_width="125dp"
-        android:layout_height="0dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/roundedbutton"
-        android:gravity="center_vertical"
-        android:text="GÆT"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/inputField"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lettersText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/galgeImage"
+        app:layout_constraintVertical_bias="0.6">
+
+        <Button
+            android:id="@+id/btn_q"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="q"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_w"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="w"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_q"
+            app:layout_constraintTop_toTopOf="@+id/btn_q" />
+
+        <Button
+            android:id="@+id/btn_e"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="e"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_w"
+            app:layout_constraintTop_toTopOf="@+id/btn_q" />
+
+        <Button
+            android:id="@+id/btn_r"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="r"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_e"
+            app:layout_constraintTop_toTopOf="@+id/btn_q" />
+
+        <Button
+            android:id="@+id/btn_t"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="t"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_r"
+            app:layout_constraintTop_toTopOf="@+id/btn_q" />
+
+        <Button
+            android:id="@+id/btn_y"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="y"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_t"
+            app:layout_constraintTop_toTopOf="@+id/btn_q" />
+
+        <Button
+            android:id="@+id/btn_u"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="u"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_y"
+            app:layout_constraintTop_toTopOf="@+id/btn_q" />
+
+        <Button
+            android:id="@+id/btn_i"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="i"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_u"
+            app:layout_constraintTop_toTopOf="@+id/btn_q" />
+
+        <Button
+            android:id="@+id/btn_o"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="o"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_i"
+            app:layout_constraintTop_toTopOf="@+id/btn_q" />
+
+        <Button
+            android:id="@+id/btn_p"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="p"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_o"
+            app:layout_constraintTop_toTopOf="@+id/btn_q" />
+
+        <Button
+            android:id="@+id/btn_å"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="å"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_p"
+            app:layout_constraintTop_toTopOf="@+id/btn_q" />
+
+        <Button
+            android:id="@+id/btn_a"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="a"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/btn_q"
+            app:layout_constraintStart_toStartOf="@+id/btn_q"
+            app:layout_constraintTop_toBottomOf="@+id/btn_q" />
+
+        <Button
+            android:id="@+id/btn_s"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="s"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_a"
+            app:layout_constraintTop_toTopOf="@+id/btn_a" />
+
+        <Button
+            android:id="@+id/btn_d"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="d"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_s"
+            app:layout_constraintTop_toTopOf="@+id/btn_s" />
+
+        <Button
+            android:id="@+id/btn_f"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="f"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_d"
+            app:layout_constraintTop_toTopOf="@+id/btn_d" />
+
+        <Button
+            android:id="@+id/btn_g"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="g"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_f"
+            app:layout_constraintTop_toTopOf="@+id/btn_f" />
+
+        <Button
+            android:id="@+id/btn_h"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="h"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_g"
+            app:layout_constraintTop_toTopOf="@+id/btn_g" />
+
+        <Button
+            android:id="@+id/btn_j"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="j"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_h"
+            app:layout_constraintTop_toTopOf="@+id/btn_h" />
+
+        <Button
+            android:id="@+id/btn_k"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="k"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_j"
+            app:layout_constraintTop_toTopOf="@+id/btn_j" />
+
+        <Button
+            android:id="@+id/btn_l"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="l"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_k"
+            app:layout_constraintTop_toTopOf="@+id/btn_k" />
+
+        <Button
+            android:id="@+id/btn_æ"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="æ"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_l"
+            app:layout_constraintTop_toTopOf="@+id/btn_l" />
+
+        <Button
+            android:id="@+id/btn_ø"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="ø"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_æ"
+            app:layout_constraintTop_toTopOf="@+id/btn_æ" />
+
+        <Button
+            android:id="@+id/btn_z"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="z"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/btn_d"
+            app:layout_constraintTop_toBottomOf="@+id/btn_d" />
+
+        <Button
+            android:id="@+id/btn_x"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="x"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_z"
+            app:layout_constraintTop_toTopOf="@+id/btn_z" />
+
+        <Button
+            android:id="@+id/btn_c"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="c"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_x"
+            app:layout_constraintTop_toTopOf="@+id/btn_x" />
+
+        <Button
+            android:id="@+id/btn_v"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="v"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_c"
+            app:layout_constraintTop_toTopOf="@+id/btn_c" />
+
+        <Button
+            android:id="@+id/btn_b"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="b"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_v"
+            app:layout_constraintTop_toTopOf="@+id/btn_v" />
+
+        <Button
+            android:id="@+id/btn_n"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="n"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_b"
+            app:layout_constraintTop_toTopOf="@+id/btn_b" />
+
+        <Button
+            android:id="@+id/btn_m"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="37dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@null"
+            android:text="m"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_n"
+            app:layout_constraintTop_toTopOf="@+id/btn_n" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
