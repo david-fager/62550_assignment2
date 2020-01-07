@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,14 +69,18 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
     // Shows the popup fragment asking for gamemode
     public void popup() {
-        //inputField.setEnabled(false);
-        //guessButton.setEnabled(false);
+        for (Button b : letters) {
+            b.setClickable(false);
+        }
         Fragment fragment = new GamePopup();
         getSupportFragmentManager().beginTransaction().add(R.id.popup, fragment).commit();
     }
 
     // Called from the fragments class, sets the mode and/or difficulty value
     public void chooseMode(int mode, int diffValue) {
+        for (Button b : letters) {
+            b.setClickable(true);
+        }
         if (mode == 1) {
             System.out.println("NORMAL MODE");
             resetGame();
@@ -95,6 +100,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         galgeImage.setImageResource(imageResources[(numberOfMistakes = 0)]);
         for (Button b : letters) {
             b.setBackgroundColor(Color.argb(255,255,255,255));
+            b.setClickable(true);
         }
         System.out.println("Game reset");
         galgelogik.logStatus();
