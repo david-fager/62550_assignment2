@@ -7,12 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Arrays;
@@ -81,12 +83,30 @@ public class History extends AppCompatActivity implements AdapterView.OnItemClic
 
         listView.setOnItemClickListener(this);
 
-        // Setting the content view to the self-defined listview
-        setContentView(listView);
+        if (!mistakes[0].equals("")) {
+            // Setting the content view to the self-defined listview
+            setContentView(listView);
+        } else {
+            // This code is writting with great help by 'App07' answer on this stackoverflow thread:
+            // https://stackoverflow.com/questions/26260288/how-to-change-the-position-of-textviews-in-android-using-java
+            RelativeLayout ll = new RelativeLayout(this);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+            ll.setLayoutParams(layoutParams);
+
+            RelativeLayout.LayoutParams txtParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            txtParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+
+            TextView textView = new TextView(this);
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+            textView.setText("Play a round to get a history.");
+            textView.setLayoutParams(txtParams);
+
+            ll.addView(textView);
+
+            setContentView(ll);
+        }
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-    }
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {}
 }

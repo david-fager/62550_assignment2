@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class GameFinished extends AppCompatActivity implements View.OnClickListener {
 
-    TextView win_loss_text, point_text, word2guess_text;
-    Button againButton, menuButton;
+    private TextView win_loss_text, point_text, word2guess_text;
+    private Button againButton, menuButton;
+    private ImageView medal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class GameFinished extends AppCompatActivity implements View.OnClickListe
         word2guess_text = findViewById(R.id.word2guess_text);
         againButton = findViewById(R.id.againButton);
         menuButton = findViewById(R.id.menuButton);
+        medal = findViewById(R.id.image_medal);
 
         againButton.setOnClickListener(this);
         menuButton.setOnClickListener(this);
@@ -47,6 +50,21 @@ public class GameFinished extends AppCompatActivity implements View.OnClickListe
         } else {
             win_loss_text.setText("Umuligt!");
             point_text.setText("Hvordan kom du hertil? Snyder...");
+        }
+
+        switch (mistakes) {
+            case 0:
+                medal.setImageResource(R.drawable.ic_medal_gold);
+                break;
+            case 1:
+                medal.setImageResource(R.drawable.ic_medal_silver);
+                break;
+            case 6:
+                medal.setImageResource(R.drawable.ic_ribbon_participated);
+                break;
+            default:
+                medal.setImageResource(R.drawable.ic_medal_bronze);
+                break;
         }
     }
 
