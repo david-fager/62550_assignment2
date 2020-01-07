@@ -3,11 +3,11 @@ package com.dtu.s185120_62550_Galgeleg2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +17,12 @@ import androidx.fragment.app.Fragment;
 
 public class Game extends AppCompatActivity implements View.OnClickListener {
 
-    private Button[] letters = new Button[24];
+    private int[] letterIds = {R.id.btn_q, R.id.btn_w, R.id.btn_e, R.id.btn_r, R.id.btn_t,
+            R.id.btn_y, R.id.btn_u, R.id.btn_i, R.id.btn_o, R.id.btn_p, R.id.btn_å, R.id.btn_a,
+            R.id.btn_s, R.id.btn_d, R.id.btn_f, R.id.btn_g, R.id.btn_h, R.id.btn_j, R.id.btn_k,
+            R.id.btn_l, R.id.btn_æ, R.id.btn_ø, R.id.btn_z, R.id.btn_x, R.id.btn_c, R.id.btn_v,
+            R.id.btn_b, R.id.btn_n, R.id.btn_m};
+    private Button[] letters = new Button[29];
 
     private int[] imageResources = {R.drawable.galge, R.drawable.forkert1, R.drawable.forkert2,
             R.drawable.forkert3, R.drawable.forkert4, R.drawable.forkert5, R.drawable.forkert6};
@@ -26,9 +31,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
     private ConstraintLayout loading;
     private Galgelogik galgelogik;
-    private TextView wordText, lettersText;
-    //private Button guessButton;
-    //private EditText inputField;
+    private TextView wordText;
     private boolean freshGame = true;
 
     @Override
@@ -39,15 +42,15 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         galgelogik = new Galgelogik();
 
         // Initializes views and buttons
-        //guessButton = findViewById(R.id.guessButton);
-        //inputField = findViewById(R.id.inputField);
         wordText = findViewById(R.id.wordText);
-        //lettersText = findViewById(R.id.lettersText);
         galgeImage = findViewById(R.id.galgeImage);
         loading = findViewById(R.id.loadingLayout);
         loading.setVisibility(View.INVISIBLE);
 
-        //guessButton.setOnClickListener(this);
+        for (int i = 0; i < letters.length; i++) {
+            letters[i] = findViewById(letterIds[i]);
+            letters[i].setOnClickListener(this);
+        }
 
         popup();
     }
@@ -89,14 +92,11 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     public void resetGame() {
         galgelogik.nulstil();
         wordText.setText(galgelogik.getSynligtOrd());
-        //lettersText.setText("");
         galgeImage.setImageResource(imageResources[(numberOfMistakes = 0)]);
-
-        //inputField.setEnabled(true);
-        //guessButton.setEnabled(true);
-
+        for (Button b : letters) {
+            b.setBackgroundColor(Color.argb(255,255,255,255));
+        }
         System.out.println("Game reset");
-
         galgelogik.logStatus();
     }
 
@@ -134,30 +134,24 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // Either an empty input field or letter was already guessed
-        //if (inputField.getText().toString().equals("") || letterGuessedEarlier()) {
-            //return;
-        //}
-
-        // Saving input field value and clearing it
-        //String guessedLetter = inputField.getText().toString().toLowerCase();
-        //System.out.println("Player guessed '" + guessedLetter + "'");
-        //inputField.setText("");
-
         // User typed in a letter to guess
-        //galgelogik.gætBogstav(guessedLetter);
-
-        // Updating the visible word
-        wordText.setText(galgelogik.getSynligtOrd().toUpperCase());
+        galgelogik.gætBogstav(((Button)v).getText().toString());
 
         // If it was a wrong letter, add it to the list and change the image
+        System.out.println("Player guessed '" + ((Button)v).getText().toString() + "'");
         if (!galgelogik.erSidsteBogstavKorrekt()) {
             System.out.println("Guess was wrong");
             //displayWrongLetters(guessedLetter);
             galgeImage.setImageResource(imageResources[++numberOfMistakes]);
+            ((Button)v).setBackgroundColor(Color.argb(255, 255, 0, 0));
         } else {
             System.out.println("Guess was correct");
+            ((Button)v).setBackgroundColor(Color.argb(255, 0, 255, 0));
         }
+        ((Button)v).setClickable(false);
+
+        // Updating the visible word
+        wordText.setText(galgelogik.getSynligtOrd().toUpperCase());
 
         // Printing out the status
         galgelogik.logStatus();
@@ -168,33 +162,6 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             gameOver();
         }
     }
-
-    /*
-    // Checking if the guessed letter was guessed earlier in the game
-    private boolean letterGuessedEarlier() {
-        for (String letter : galgelogik.getBrugteBogstaver()) {
-            if (letter.equals(inputField.getText().toString())) {
-                inputField.setText("");
-                System.out.println("Letter already guessed");
-                return true;
-            }
-        }
-        return false;
-    }
-    */
-
-    /*
-    // Display used letters (builds a string appended with each guessed letter
-    private void displayWrongLetters(String letter) {
-        String guessedLetters = lettersText.getText().toString();
-        if (guessedLetters.length() > 0) {
-            guessedLetters += ", " + letter;
-        } else {
-            guessedLetters = letter;
-        }
-        lettersText.setText(guessedLetters.toUpperCase());
-    }
-    */
 
     // Checks if the game is over, and if so whether the player won or lost.
     private void gameOver() {
