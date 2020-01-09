@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Akt_history"></activity>
         <activity android:name=".Akt_gameover" />
-        <activity android:name=".Frag_popup" />
+        <activity android:name=".Frag_mode" />
         <activity android:name=".Akt_help" />
         <activity android:name=".Akt_game" />
         <activity android:name=".Akt_menu">

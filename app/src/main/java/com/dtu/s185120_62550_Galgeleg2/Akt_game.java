@@ -71,7 +71,7 @@ public class Akt_game extends AppCompatActivity implements View.OnClickListener 
         for (Button b : letters) {
             b.setClickable(false);
         }
-        Fragment fragment = new Frag_popup();
+        Fragment fragment = new Frag_mode();
         getSupportFragmentManager().beginTransaction().add(R.id.popup, fragment).commit();
     }
 

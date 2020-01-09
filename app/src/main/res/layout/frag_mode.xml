@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#33000000"
-    tools:context=".Frag_popup">
+    tools:context=".Frag_mode">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/whiteBox"
@@ -167,13 +167,13 @@
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
         android:elevation="3dp"
-        app:layout_constraintBottom_toTopOf="@+id/ChooseWord"
+        app:layout_constraintBottom_toTopOf="@+id/choose_word"
         app:layout_constraintEnd_toEndOf="@+id/docsButton"
         app:layout_constraintStart_toStartOf="@+id/docsButton"
         app:layout_constraintTop_toBottomOf="@+id/docsButton" />
 
     <Button
-        android:id="@+id/ChooseWord"
+        android:id="@+id/choose_word"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="50dp"

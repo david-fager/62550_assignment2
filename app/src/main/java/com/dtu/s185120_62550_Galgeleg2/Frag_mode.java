@@ -9,9 +9,9 @@ import android.widget.SeekBar;
 
 import androidx.fragment.app.Fragment;
 
-public class Frag_popup extends Fragment implements View.OnClickListener {
+public class Frag_mode extends Fragment implements View.OnClickListener {
 
-    private Button normalButton, randomButton, sheetButton;
+    private Button normalButton, randomButton, sheetButton, chooseButton;
     private SeekBar diffBar;
     private int diffValue = 12;
 
@@ -22,9 +22,11 @@ public class Frag_popup extends Fragment implements View.OnClickListener {
         normalButton = popup.findViewById(R.id.normalButton);
         randomButton = popup.findViewById(R.id.randomButton);
         sheetButton = popup.findViewById(R.id.docsButton);
+        chooseButton = popup.findViewById(R.id.choose_word);
         normalButton.setOnClickListener(this);
         randomButton.setOnClickListener(this);
         sheetButton.setOnClickListener(this);
+        chooseButton.setOnClickListener(this);
 
         // SeekBars needs the OnSeekBarChangeListener to change the 'progress' (value).
         diffBar = popup.findViewById(R.id.sheetsDiff);
@@ -65,6 +67,10 @@ public class Frag_popup extends Fragment implements View.OnClickListener {
         } else if (v == sheetButton) {
             ((Akt_game) getActivity()).chooseMode(3, diffValue);
 
+        } else if (v == chooseButton) {
+            Fragment wordlist = new Frag_wordlist();
+            getFragmentManager().beginTransaction().add(R.id.popup, wordlist).addToBackStack(null).commit();
+            return;
         }
 
         // Closes the fragment this way since there is no backstack on it
