@@ -52,8 +52,6 @@ public class Akt_history extends AppCompatActivity implements AdapterView.OnItem
         }
 
         // Defining own ArrayAdapter for simplicity of list building
-        // This listview and adapter is inspired by Jacob Nordfalk's teaching in DTU's
-        // course 62550 lecture 06, video 'Android Lektion 4.3 - Lister'.
         ListView listView = new ListView(this);
         listView.setAdapter(new ArrayAdapter(this, R.layout.akt_history, R.id.element_word_text, length) {
             @NonNull
