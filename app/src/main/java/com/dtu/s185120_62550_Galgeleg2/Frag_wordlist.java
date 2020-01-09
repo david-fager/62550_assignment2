@@ -62,6 +62,11 @@ public class Frag_wordlist extends Fragment {
     public void setupListview() {
         // If the words from DR was successfully loaded, then add them to the accessible words
         if (dr_words != null) {
+            for (int i = 0; i < dr_words.size(); i++) {
+                if (dr_words.get(i).toString().isEmpty()) {
+                    dr_words.remove(i);
+                }
+            }
             accessible_words.addAll(dr_words);
         }
 
