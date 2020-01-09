@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".GameFinished">
+    tools:context=".GameOver">
 
     <TextView
         android:id="@+id/win_loss_text"

@@ -9,14 +9,14 @@ import android.widget.SeekBar;
 
 import androidx.fragment.app.Fragment;
 
-public class GamePopup extends Fragment implements View.OnClickListener {
+public class Popup extends Fragment implements View.OnClickListener {
 
     private Button normalButton, randomButton, sheetButton;
     private SeekBar diffBar;
     private int diffValue = 12;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View popup = inflater.inflate(R.layout.activity_gamepopup, container, false);
+        View popup = inflater.inflate(R.layout.popup_frag, container, false);
 
         // Initialising variables
         normalButton = popup.findViewById(R.id.normalButton);

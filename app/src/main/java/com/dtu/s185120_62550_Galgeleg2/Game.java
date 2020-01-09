@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,7 +37,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.game_akt);
 
         galgelogik = new Galgelogik();
 
@@ -72,7 +71,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         for (Button b : letters) {
             b.setClickable(false);
         }
-        Fragment fragment = new GamePopup();
+        Fragment fragment = new Popup();
         getSupportFragmentManager().beginTransaction().add(R.id.popup, fragment).commit();
     }
 
@@ -185,7 +184,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             streakValue = preferences.getInt("streak", 0);
             preferences.edit().putInt("streak", ++streakValue).apply();
 
-            intent = new Intent(this, GameFinished.class);
+            intent = new Intent(this, GameOver.class);
             intent.putExtra("result", "won");
             intent.putExtra("word", galgelogik.getOrdet());
             intent.putExtra("mistakes", numberOfMistakes);
@@ -198,7 +197,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
             preferences.edit().putInt("streak", 0).apply();
 
-            intent = new Intent(this, GameFinished.class);
+            intent = new Intent(this, GameOver.class);
             intent.putExtra("result", "lost");
             intent.putExtra("word", galgelogik.getOrdet());
             intent.putExtra("mistakes", numberOfMistakes);

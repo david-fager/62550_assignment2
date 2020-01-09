@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class GameFinished extends AppCompatActivity implements View.OnClickListener {
+public class GameOver extends AppCompatActivity implements View.OnClickListener {
 
     private TextView win_loss_text, point_text, word2guess_text;
     private Button againButton, menuButton;
@@ -18,7 +18,7 @@ public class GameFinished extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_finished);
+        setContentView(R.layout.gameover_akt);
 
         // Initialising variables
         win_loss_text = findViewById(R.id.win_loss_text);

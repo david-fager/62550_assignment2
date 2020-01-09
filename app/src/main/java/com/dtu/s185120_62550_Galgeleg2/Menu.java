@@ -19,7 +19,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.menu_akt);
 
         // Initialising variables
         startButton = findViewById(R.id.startButton);
