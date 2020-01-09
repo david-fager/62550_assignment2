@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+
 public class Akt_game extends AppCompatActivity implements View.OnClickListener {
 
     private int[] letterIds = {R.id.btn_q, R.id.btn_w, R.id.btn_e, R.id.btn_r, R.id.btn_t,
@@ -52,7 +54,7 @@ public class Akt_game extends AppCompatActivity implements View.OnClickListener 
             letters[i].setOnClickListener(this);
         }
 
-        popup();
+        popup(false);
     }
 
     // If the user chooses to play again
@@ -61,17 +63,24 @@ public class Akt_game extends AppCompatActivity implements View.OnClickListener 
         super.onResume();
         if (!freshGame) {
             System.out.println("Player wants another round, resetting...");
-            resetGame();
+            if (galgelogik.muligeOrd.size() == 1) {
+                popup(true);
+            } else {
+                resetGame();
+            }
         }
         freshGame = false;
     }
 
     // Shows the popup fragment asking for gamemode
-    public void popup() {
+    public void popup(boolean rechoose) {
         for (Button b : letters) {
             b.setClickable(false);
         }
         Fragment fragment = new Frag_mode();
+        if (rechoose) {
+            fragment = new Frag_wordlist();
+        }
         getSupportFragmentManager().beginTransaction().add(R.id.popup, fragment).commit();
     }
 
@@ -91,7 +100,10 @@ public class Akt_game extends AppCompatActivity implements View.OnClickListener 
             System.out.println("SHEETS MODE " + diffValue);
             getFromInternet("SHEETS", String.valueOf(diffValue));
         } else if (mode == 4) {
-            System.out.println("MODE CHOSEN m8");
+            ArrayList<String> temp = new ArrayList<>();
+            temp.add(selectedWord);
+            galgelogik.muligeOrd = temp;
+            resetGame();
         }
     }
 

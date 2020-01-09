@@ -68,6 +68,9 @@ public class Frag_wordlist extends Fragment {
         final String[] derp = (String[]) accessible_words.toArray(new String[accessible_words.size()]);
 
         // Actually making the list of the words
+        if (getActivity() == null) {
+            return;
+        }
         ListView listView = getActivity().findViewById(R.id.wordlist_listview);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.element_wordlist_text, derp) {
             @NonNull
