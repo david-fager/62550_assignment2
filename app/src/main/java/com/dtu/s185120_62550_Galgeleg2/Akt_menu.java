@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Menu extends AppCompatActivity implements View.OnClickListener {
+public class Akt_menu extends AppCompatActivity implements View.OnClickListener {
 
     private Button startButton, historyButton, helpButton;
     private TextView wonValue, lostValue, streakValue;
@@ -19,7 +19,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_akt);
+        setContentView(R.layout.akt_menu);
 
         // Initialising variables
         startButton = findViewById(R.id.startButton);
@@ -49,11 +49,11 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         Intent intent = null;
         if (v == startButton) {
-            intent = new Intent(this, Game.class);
+            intent = new Intent(this, Akt_game.class);
         } else if (v == historyButton) {
-            intent = new Intent(this, History.class);
+            intent = new Intent(this, Akt_history.class);
         } else if (v == helpButton) {
-            intent = new Intent(this, Help.class);
+            intent = new Intent(this, Akt_help.class);
         }
         startActivity(intent);
     }

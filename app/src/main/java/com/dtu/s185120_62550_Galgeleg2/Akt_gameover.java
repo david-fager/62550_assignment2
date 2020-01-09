@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class GameOver extends AppCompatActivity implements View.OnClickListener {
+public class Akt_gameover extends AppCompatActivity implements View.OnClickListener {
 
     private TextView win_loss_text, point_text, word2guess_text;
     private Button againButton, menuButton;
@@ -18,7 +18,7 @@ public class GameOver extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.gameover_akt);
+        setContentView(R.layout.akt_gameover);
 
         // Initialising variables
         win_loss_text = findViewById(R.id.win_loss_text);
@@ -71,10 +71,10 @@ public class GameOver extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         if (view == againButton) {
-            finish(); // back to the Game activity
+            finish(); // back to the Akt_game activity
         } else if (view == menuButton) {
             // New menu activity, with a clear backstack
-            Intent intent = new Intent(this, Menu.class);
+            Intent intent = new Intent(this, Akt_menu.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }

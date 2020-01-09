@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
-public class Game extends AppCompatActivity implements View.OnClickListener {
+public class Akt_game extends AppCompatActivity implements View.OnClickListener {
 
     private int[] letterIds = {R.id.btn_q, R.id.btn_w, R.id.btn_e, R.id.btn_r, R.id.btn_t,
             R.id.btn_y, R.id.btn_u, R.id.btn_i, R.id.btn_o, R.id.btn_p, R.id.btn_å, R.id.btn_a,
@@ -37,7 +37,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_akt);
+        setContentView(R.layout.akt_game);
 
         galgelogik = new Galgelogik();
 
@@ -71,7 +71,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         for (Button b : letters) {
             b.setClickable(false);
         }
-        Fragment fragment = new Popup();
+        Fragment fragment = new Frag_popup();
         getSupportFragmentManager().beginTransaction().add(R.id.popup, fragment).commit();
     }
 
@@ -101,7 +101,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             b.setBackgroundColor(Color.argb(255,255,255,255));
             b.setClickable(true);
         }
-        System.out.println("Game reset");
+        System.out.println("Akt_game reset");
         galgelogik.logStatus();
     }
 
@@ -184,7 +184,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             streakValue = preferences.getInt("streak", 0);
             preferences.edit().putInt("streak", ++streakValue).apply();
 
-            intent = new Intent(this, GameOver.class);
+            intent = new Intent(this, Akt_gameover.class);
             intent.putExtra("result", "won");
             intent.putExtra("word", galgelogik.getOrdet());
             intent.putExtra("mistakes", numberOfMistakes);
@@ -197,7 +197,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
             preferences.edit().putInt("streak", 0).apply();
 
-            intent = new Intent(this, GameOver.class);
+            intent = new Intent(this, Akt_gameover.class);
             intent.putExtra("result", "lost");
             intent.putExtra("word", galgelogik.getOrdet());
             intent.putExtra("mistakes", numberOfMistakes);

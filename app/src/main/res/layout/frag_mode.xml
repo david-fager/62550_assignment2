@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#33000000"
+    tools:context=".Frag_popup">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/whiteBox"
+        android:layout_width="match_parent"
+        android:layout_height="460dp"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:scaleType="fitXY" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/Popuptext"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:elevation="3dp"
+        android:gravity="bottom|center_horizontal"
+        android:text="Hvordan ønsker du at spille?"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/normalButton"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBox"
+        app:layout_constraintStart_toStartOf="@+id/whiteBox"
+        app:layout_constraintTop_toTopOf="@+id/whiteBox"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toTopOf="@id/normalButton"
+        app:layout_constraintEnd_toEndOf="@id/Popuptext"
+        app:layout_constraintStart_toStartOf="@id/Popuptext"
+        app:layout_constraintTop_toBottomOf="@id/Popuptext" />
+
+    <Button
+        android:id="@+id/normalButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/roundedbutton"
+        android:elevation="3dp"
+        android:text="Standard ordliste"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBox"
+        app:layout_constraintStart_toStartOf="@+id/whiteBox"
+        app:layout_constraintTop_toBottomOf="@id/Popuptext" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toTopOf="@id/randomButton"
+        app:layout_constraintEnd_toEndOf="@id/normalButton"
+        app:layout_constraintStart_toStartOf="@id/normalButton"
+        app:layout_constraintTop_toBottomOf="@id/normalButton" />
+
+    <Button
+        android:id="@+id/randomButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/roundedbutton"
+        android:elevation="3dp"
+        android:text="Tilfældigt ord fra dr.dk"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@id/diff2"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBox"
+        app:layout_constraintStart_toStartOf="@+id/whiteBox"
+        app:layout_constraintTop_toBottomOf="@id/normalButton" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toTopOf="@id/diff2"
+        app:layout_constraintEnd_toEndOf="@id/randomButton"
+        app:layout_constraintStart_toStartOf="@id/randomButton"
+        app:layout_constraintTop_toBottomOf="@id/randomButton" />
+
+    <TextView
+        android:id="@+id/diff1"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:elevation="3dp"
+        android:gravity="end"
+        android:text="1"
+        app:layout_constraintBottom_toTopOf="@id/sheetsDiff"
+        app:layout_constraintStart_toStartOf="@id/sheetsDiff" />
+
+    <TextView
+        android:id="@+id/diff2"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:elevation="3dp"
+        android:gravity="center_horizontal"
+        android:text="2"
+        app:layout_constraintBottom_toTopOf="@id/sheetsDiff"
+        app:layout_constraintEnd_toStartOf="@id/diff3"
+        app:layout_constraintStart_toEndOf="@id/diff1" />
+
+    <TextView
+        android:id="@+id/diff3"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:elevation="3dp"
+        android:gravity="start"
+        android:text="3"
+        app:layout_constraintBottom_toTopOf="@id/sheetsDiff"
+        app:layout_constraintEnd_toEndOf="@id/sheetsDiff" />
+
+    <Button
+        android:id="@+id/docsButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/roundedbutton"
+        android:elevation="3dp"
+        android:text="Hent fra Google Sheets"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/whiteBox"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBox"
+        app:layout_constraintStart_toStartOf="@+id/whiteBox" />
+
+    <SeekBar
+        android:id="@+id/sheetsDiff"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:elevation="3dp"
+        android:max="2"
+        android:progress="1"
+        android:progressTint="#0099CC"
+        app:layout_constraintBottom_toTopOf="@+id/docsButton"
+        app:layout_constraintEnd_toEndOf="@+id/docsButton"
+        app:layout_constraintStart_toStartOf="@+id/docsButton" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/ChooseWord"
+        app:layout_constraintEnd_toEndOf="@+id/docsButton"
+        app:layout_constraintStart_toStartOf="@+id/docsButton"
+        app:layout_constraintTop_toBottomOf="@+id/docsButton" />
+
+    <Button
+        android:id="@+id/ChooseWord"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/roundedbutton"
+        android:elevation="3dp"
+        android:text="Vælg Ord Til Ven"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/whiteBox"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBox"
+        app:layout_constraintStart_toStartOf="@+id/whiteBox" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

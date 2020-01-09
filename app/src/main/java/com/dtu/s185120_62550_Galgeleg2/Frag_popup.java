@@ -9,14 +9,14 @@ import android.widget.SeekBar;
 
 import androidx.fragment.app.Fragment;
 
-public class Popup extends Fragment implements View.OnClickListener {
+public class Frag_popup extends Fragment implements View.OnClickListener {
 
     private Button normalButton, randomButton, sheetButton;
     private SeekBar diffBar;
     private int diffValue = 12;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View popup = inflater.inflate(R.layout.popup_frag, container, false);
+        View popup = inflater.inflate(R.layout.frag_mode, container, false);
 
         // Initialising variables
         normalButton = popup.findViewById(R.id.normalButton);
@@ -55,15 +55,15 @@ public class Popup extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // Calls the Game classes method chooseMode, with whether a word from dr.dk is chosen or not
+        // Calls the Akt_game classes method chooseMode, with whether a word from dr.dk is chosen or not
         if (v == normalButton) {
-            ((Game) getActivity()).chooseMode(1, 0);
+            ((Akt_game) getActivity()).chooseMode(1, 0);
 
         } else if (v == randomButton) {
-            ((Game) getActivity()).chooseMode(2, 0);
+            ((Akt_game) getActivity()).chooseMode(2, 0);
 
         } else if (v == sheetButton) {
-            ((Game) getActivity()).chooseMode(3, diffValue);
+            ((Akt_game) getActivity()).chooseMode(3, diffValue);
 
         }
 
