@@ -14,7 +14,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="50dp"
-        android:text="- Det gælder om, at gætte hvilke bogstaver der indgår i det skjulte ord som er erstattet med stjerner (*).\n\n- Eksempelvis er ordet 'Galgeleg' erstattet med '********'.\n\n- For hvert forkert gættede bogstav, tegnes en stikfigur mere og mere i galgen, og med seks forkerte gæt, er figuren helt tegnet og spillet er tabt.\n\n- Gættes alle bogstaverne i ordet, vinder du spillet.\n\n- Der kan med internetadgang også hentes et tilfældigt ord fra dr.dk eller Google Sheets."
+        android:text="- Det gælder om, at gætte hvilke bogstaver der indgår i det skjulte ord, som er erstattet med stjerner (*).\n\n- Eksempelvis er ordet 'Galgeleg' erstattet med '********'.\n\n- For hvert forkert gættede bogstav, tegnes der flere dele af en stikfigur i galgen, og med seks forkerte gæt er figuren helt tegnet og spillet er tabt.\n\n- Gættes alle bogstaverne i ordet, vinder du spillet og bliver tildelt en medalje.\n\n- Medaljerne gives som følger: 0 forkerte bogstaver giver en guldmedalje, 1 forkert gæt giver en sølvmedalje og 2-5 forkerte gæt giver en bronzemedlaje.\n\n- Der kan med internetadgang også hentes et tilfældigt ord fra dr.dk eller Google Sheets."
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
