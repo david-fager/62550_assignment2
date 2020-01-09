@@ -1,5 +1,8 @@
 package com.dtu.s185120_62550_Galgeleg2;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,7 +38,21 @@ public class Frag_wordlist extends Fragment {
         // Tries to get all words from DR so the user can choose on of those
         new AsyncTask<String, Void, Void>() {
             @Override
-            protected void onPreExecute() {loading.setVisibility(View.VISIBLE);}
+            protected void onPreExecute() {
+                ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo info = cm.getActiveNetworkInfo();
+                if (info == null || !info.isConnected()) {
+                    Toast.makeText(getActivity(), "No internet connection", Toast.LENGTH_LONG).show();
+                    cancel(true);
+
+                    ((Akt_game) getActivity()).resetGame();
+                    // Closes the fragment this way since there is no backstack on it
+                    getFragmentManager().beginTransaction().remove(Frag_wordlist.this).commit();
+                    return;
+                }
+
+                loading.setVisibility(View.VISIBLE);
+            }
 
             @Override
             protected Void doInBackground(String... strings) {
