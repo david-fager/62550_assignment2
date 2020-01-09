@@ -53,4 +53,26 @@
 
     </ListView>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/wordlist_layout_progress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="9dp"
+        app:layout_constraintBottom_toBottomOf="@+id/wordlist_listview"
+        app:layout_constraintEnd_toEndOf="@+id/wordlist_listview"
+        app:layout_constraintStart_toStartOf="@+id/wordlist_listview"
+        app:layout_constraintTop_toTopOf="@+id/wordlist_listview">
+
+        <ProgressBar
+            android:id="@+id/bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
