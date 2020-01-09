@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00000000"
+    android:background="#33000000"
     tools:context=".Frag_mode">
 
     <androidx.cardview.widget.CardView
@@ -44,7 +44,7 @@
         android:id="@+id/wordlist_listview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="25dp"
         android:elevation="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/whiteBox"
         app:layout_constraintEnd_toEndOf="@+id/Popuptext"

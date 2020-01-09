@@ -5,19 +5,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.util.ArrayList;
 
-public class Frag_wordlist extends Fragment implements View.OnClickListener {
+public class Frag_wordlist extends Fragment {
 
     private Galgelogik tempGalgelogik;
     private ArrayList accessible_words, dr_words;
@@ -79,10 +80,15 @@ public class Frag_wordlist extends Fragment implements View.OnClickListener {
             }
         };
         listView.setAdapter(adapter);
-    }
 
-    @Override
-    public void onClick(View v) {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ((Akt_game) getActivity()).chooseMode(4, 0, derp[position]);
 
+                // Closes the fragment this way since there is no backstack on it
+                getFragmentManager().beginTransaction().remove(Frag_wordlist.this).commit();
+            }
+        });
     }
 }

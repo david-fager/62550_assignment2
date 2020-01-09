@@ -76,12 +76,13 @@ public class Akt_game extends AppCompatActivity implements View.OnClickListener 
     }
 
     // Called from the fragments class, sets the mode and/or difficulty value
-    public void chooseMode(int mode, int diffValue) {
+    public void chooseMode(int mode, int diffValue, String selectedWord) {
         for (Button b : letters) {
             b.setClickable(true);
         }
         if (mode == 1) {
             System.out.println("NORMAL MODE");
+            galgelogik = new Galgelogik();
             resetGame();
         } else if (mode == 2) {
             System.out.println("DR MODE");
@@ -89,6 +90,8 @@ public class Akt_game extends AppCompatActivity implements View.OnClickListener 
         } else if (mode == 3) {
             System.out.println("SHEETS MODE " + diffValue);
             getFromInternet("SHEETS", String.valueOf(diffValue));
+        } else if (mode == 4) {
+            System.out.println("MODE CHOSEN m8");
         }
     }
 
@@ -106,12 +109,13 @@ public class Akt_game extends AppCompatActivity implements View.OnClickListener 
     }
 
     // Starts a new thread via asynctask to get words from the internet (either dr.dk or google sheets)
-    // This AsyncTask is inspired by Jacob Nordfalk's teaching in DTU's
-    // course 62550 lecture 09, video 'Android Lektion 6.2 Flertrådet programmering - AsyncTask'.
     public void getFromInternet(String mode, String difficulty) {
         new AsyncTask<String, Void, Void>() {
             @Override
             protected void onPreExecute() {
+                for (Button b : letters) {
+                    b.setClickable(false);
+                }
                 loading.setVisibility(View.VISIBLE);
             }
 
@@ -131,6 +135,9 @@ public class Akt_game extends AppCompatActivity implements View.OnClickListener 
 
             @Override
             protected void onPostExecute(Void aVoid) {
+                for (Button b : letters) {
+                    b.setClickable(true);
+                }
                 loading.setVisibility(View.INVISIBLE);
                 resetGame();
             }

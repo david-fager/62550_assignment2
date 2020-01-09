@@ -59,18 +59,17 @@ public class Frag_mode extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         // Calls the Akt_game classes method chooseMode, with whether a word from dr.dk is chosen or not
         if (v == normalButton) {
-            ((Akt_game) getActivity()).chooseMode(1, 0);
+            ((Akt_game) getActivity()).chooseMode(1, 0, "");
 
         } else if (v == randomButton) {
-            ((Akt_game) getActivity()).chooseMode(2, 0);
+            ((Akt_game) getActivity()).chooseMode(2, 0, "");
 
         } else if (v == sheetButton) {
-            ((Akt_game) getActivity()).chooseMode(3, diffValue);
+            ((Akt_game) getActivity()).chooseMode(3, diffValue, "");
 
         } else if (v == chooseButton) {
             Fragment wordlist = new Frag_wordlist();
-            getFragmentManager().beginTransaction().add(R.id.popup, wordlist).addToBackStack(null).commit();
-            return;
+            getFragmentManager().beginTransaction().add(R.id.popup, wordlist).commit();
         }
 
         // Closes the fragment this way since there is no backstack on it
