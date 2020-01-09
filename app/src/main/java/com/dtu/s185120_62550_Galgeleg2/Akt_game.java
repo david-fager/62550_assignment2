@@ -138,7 +138,7 @@ public class Akt_game extends AppCompatActivity implements View.OnClickListener 
                 ConnectivityManager cm = (ConnectivityManager) Akt_game.this.getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo info = cm.getActiveNetworkInfo();
                 if (info == null || !info.isConnected()) {
-                    Toast.makeText(Akt_game.this, "No internet connection", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Akt_game.this, "Intet internet", Toast.LENGTH_LONG).show();
                     cancel(true);
                     resetGame();
                     return;
@@ -148,6 +148,7 @@ public class Akt_game extends AppCompatActivity implements View.OnClickListener 
                     b.setClickable(false);
                 }
                 loading.setVisibility(View.VISIBLE);
+                Toast.makeText(Akt_game.this, "Henter ord fra internettet", Toast.LENGTH_SHORT).show();
             }
 
             @Override
