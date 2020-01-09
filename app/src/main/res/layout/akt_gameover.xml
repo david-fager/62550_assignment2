@@ -42,6 +42,8 @@
         app:layout_constraintStart_toStartOf="@+id/word_info"
         app:layout_constraintTop_toBottomOf="@+id/word_info" />
 
+    <!-- This is a library by 'Jaewoong Eum (skydoves)' called 'medal' -->
+    <!-- Link: https://android-arsenal.com/details/1/6031 -->
     <com.skydoves.medal.MedalLayout
         android:layout_width="0dp"
         android:layout_height="0dp"

@@ -255,8 +255,4 @@ public class Akt_game extends AppCompatActivity implements View.OnClickListener 
 
     }
 
-    public Galgelogik getGalgelogik() {
-        return galgelogik;
-    }
-
 }
