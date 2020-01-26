@@ -109,87 +109,88 @@
         <Button
             android:id="@+id/btn_q"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="2dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="q"
             android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_w"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btn_w"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="w"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_q"
+            app:layout_constraintEnd_toStartOf="@+id/btn_e"
             app:layout_constraintTop_toTopOf="@+id/btn_q" />
 
         <Button
             android:id="@+id/btn_e"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="e"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_w"
+            app:layout_constraintEnd_toStartOf="@+id/btn_r"
             app:layout_constraintTop_toTopOf="@+id/btn_q" />
 
         <Button
             android:id="@+id/btn_r"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="r"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_e"
+            app:layout_constraintEnd_toStartOf="@+id/btn_t"
             app:layout_constraintTop_toTopOf="@+id/btn_q" />
 
         <Button
             android:id="@+id/btn_t"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="t"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_r"
+            app:layout_constraintEnd_toStartOf="@+id/btn_y"
             app:layout_constraintTop_toTopOf="@+id/btn_q" />
 
         <Button
             android:id="@+id/btn_y"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="y"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_t"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btn_q" />
 
         <Button
             android:id="@+id/btn_u"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
@@ -201,8 +202,8 @@
         <Button
             android:id="@+id/btn_i"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
@@ -214,8 +215,8 @@
         <Button
             android:id="@+id/btn_o"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
@@ -227,8 +228,8 @@
         <Button
             android:id="@+id/btn_p"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
@@ -240,8 +241,8 @@
         <Button
             android:id="@+id/btn_å"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
@@ -253,87 +254,88 @@
         <Button
             android:id="@+id/btn_a"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="a"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="@+id/btn_q"
-            app:layout_constraintStart_toStartOf="@+id/btn_q"
-            app:layout_constraintTop_toBottomOf="@+id/btn_q" />
+            app:layout_constraintEnd_toStartOf="@+id/btn_s"
+            app:layout_constraintTop_toTopOf="@+id/btn_s" />
 
         <Button
             android:id="@+id/btn_s"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="s"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_a"
-            app:layout_constraintTop_toTopOf="@+id/btn_a" />
+            app:layout_constraintEnd_toStartOf="@+id/btn_d"
+            app:layout_constraintTop_toTopOf="@+id/btn_d" />
 
         <Button
             android:id="@+id/btn_d"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="d"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_s"
-            app:layout_constraintTop_toTopOf="@+id/btn_s" />
+            app:layout_constraintEnd_toStartOf="@+id/btn_f"
+            app:layout_constraintTop_toTopOf="@+id/btn_f" />
 
         <Button
             android:id="@+id/btn_f"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="f"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_d"
-            app:layout_constraintTop_toTopOf="@+id/btn_d" />
+            app:layout_constraintEnd_toStartOf="@+id/btn_g"
+            app:layout_constraintTop_toTopOf="@+id/btn_g" />
 
         <Button
             android:id="@+id/btn_g"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="g"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_f"
-            app:layout_constraintTop_toTopOf="@+id/btn_f" />
+            app:layout_constraintEnd_toStartOf="@+id/btn_h"
+            app:layout_constraintTop_toTopOf="@+id/btn_h" />
 
         <Button
             android:id="@+id/btn_h"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="h"
             android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/btn_y"
             app:layout_constraintStart_toEndOf="@+id/btn_g"
-            app:layout_constraintTop_toTopOf="@+id/btn_g" />
+            app:layout_constraintStart_toStartOf="@+id/btn_y"
+            app:layout_constraintTop_toBottomOf="@+id/btn_y" />
 
         <Button
             android:id="@+id/btn_j"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
@@ -345,8 +347,8 @@
         <Button
             android:id="@+id/btn_k"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
@@ -358,8 +360,8 @@
         <Button
             android:id="@+id/btn_l"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
@@ -371,8 +373,8 @@
         <Button
             android:id="@+id/btn_æ"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
@@ -384,8 +386,8 @@
         <Button
             android:id="@+id/btn_ø"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
@@ -397,60 +399,61 @@
         <Button
             android:id="@+id/btn_z"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="z"
             android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="@+id/btn_d"
-            app:layout_constraintTop_toBottomOf="@+id/btn_d" />
+            app:layout_constraintEnd_toStartOf="@+id/btn_x"
+            app:layout_constraintTop_toTopOf="@+id/btn_x" />
 
         <Button
             android:id="@+id/btn_x"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="x"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_z"
-            app:layout_constraintTop_toTopOf="@+id/btn_z" />
+            app:layout_constraintEnd_toStartOf="@+id/btn_c"
+            app:layout_constraintTop_toTopOf="@+id/btn_c" />
 
         <Button
             android:id="@+id/btn_c"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="c"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_x"
-            app:layout_constraintTop_toTopOf="@+id/btn_x" />
+            app:layout_constraintEnd_toStartOf="@+id/btn_v"
+            app:layout_constraintTop_toTopOf="@+id/btn_v" />
 
         <Button
             android:id="@+id/btn_v"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
             android:text="v"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/btn_c"
-            app:layout_constraintTop_toTopOf="@+id/btn_c" />
+            app:layout_constraintEnd_toEndOf="@+id/btn_h"
+            app:layout_constraintStart_toStartOf="@+id/btn_h"
+            app:layout_constraintTop_toBottomOf="@+id/btn_h" />
 
         <Button
             android:id="@+id/btn_b"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
@@ -462,8 +465,8 @@
         <Button
             android:id="@+id/btn_n"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
@@ -475,8 +478,8 @@
         <Button
             android:id="@+id/btn_m"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="37dp"
-            android:layout_height="60dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@null"
